@@ -1,0 +1,106 @@
+﻿@model PostViewModel
+<style>
+    /* Styles for wrapping the search box */
+
+    .main {
+        width: 100%;
+    }
+
+    /* Bootstrap 4 text input with search icon */
+
+    .has-search .form-control {
+        padding-left: 2.375rem;
+    }
+
+    .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+        color: #aaa;
+    }
+</style>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('@Url.Content("~/img/home-bg.jpg")')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Clean Blog</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <div class="p-2 bd-highlight" style="width:160px">
+                @*@await Component.InvokeAsync("NavigationMenu")*@
+
+                <select class="custom-select" id="inputGroupSelect04"
+                        aria-label="Example select with button addon"
+                        style="font-size:15px" name="category">
+                    <option value="All" selected>All</option>
+
+                    @foreach (string category in Model.Categories)
+                    {
+                        if (category.Equals(Model.CurrentCategory))
+                        {
+                            <option value="@category" selected>@category</option>
+                        }
+                        else
+                        {
+                            <option value="@category">@category</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            <div class="main p-2 bd-highlight">
+
+                <!-- Actual search box -->
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search" name="title">
+                </div>
+            </div>
+            <div class="p-2 bd-highlight">
+                <button type="submit" class="btn btn-primary" style="padding:8px;border-radius:8px">
+                    <p style="font-size:12px;display:inline">Search</p>
+                </button>
+
+            </div>
+
+
+        </div>
+    }
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            @foreach (var p in Model.Posts)
+            {
+                @Html.Partial("ShowBlocksPartial", p)
+            }
+            @*<div class="clearfix">
+                    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                </div>*@
+
+        </div>
+
+    </div>
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-default"
+         page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
+         class="btn-group pull-right">
+    </div>
+</div>

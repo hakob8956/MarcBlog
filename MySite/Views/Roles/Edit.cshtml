@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@using Microsoft.AspNetCore.Identity
+@model MySite.Models.ViewModels.ChangeRoleViewModel
+
+<style>
+   
+    /* The container */
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 19px;
+        background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 8px;
+        top: 5px;
+        width: 4px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+</style>
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">Changing roles for the user @Model.UserEmail</div>
+                    <div class="panel-options">
+                        <a asp-action="Create" asp-controller="Users" style="font-size:large" title="Add User"><i class="fas fa-plus-circle"></i></a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" name="userId" value="@Model.UserId" />
+                        @foreach (IdentityRole role in Model.AllRoles)
+                        {
+                             
+                            <label class="container">
+                                @role.Name
+                                <input type="checkbox" name="roles" class="form-check-input" value="@role.Name"
+                                       @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                                <span class="checkmark"></span>
+                            </label>
+                        }
+
+                      
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

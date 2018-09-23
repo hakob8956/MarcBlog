@@ -1,0 +1,18 @@
+﻿@model Post
+
+<div class="post-preview">
+    <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID">
+        <h2 class="post-title">
+            @Model.Title
+        </h2>
+        <h3 class="post-subtitle">
+           @Html.Raw(Model.Description)
+        </h3>
+    </a>
+    <p class="post-meta">
+        Posted by
+        <a href="#">@Model.Author</a>
+        on @Model.DateTime.Month
+    </p>
+</div>
+<hr>

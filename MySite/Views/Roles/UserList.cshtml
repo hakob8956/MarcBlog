@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model IEnumerable<MySite.Models.User>
+
+<h2>List Roles</h2>
+<table class="table">
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td scope="row">@user.Email</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Access rights</a>
+            </td>
+        </tr>
+    }
+</table>

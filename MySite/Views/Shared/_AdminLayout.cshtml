@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link asp-href-include="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link asp-href-include="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" asp-href-include="~/admin/css/styles.css" />
+    <script asp-src-include="~/admin/ckeditor/ckeditor.js"></script>
+   
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1><a asp-action="Index" asp-controller="Users">Admin Panel</a></h1>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="navbar navbar-inverse" role="banner">
+                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                                    <ul class="dropdown-menu animated fadeInUp">
+                                        <li><a href="profile.html" style="color:white">Profile</a></li>
+                                        <li><a href="login.html">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar content-box" style="display: block;">
+                    <ul class="nav">
+                        <!-- Main menu -->
+                        <li><a asp-action="Index" asp-controller="Admin"><i class="fas fa-database"></i> Content</a></li>
+                        <li><a asp-action="Index" asp-controller="Users"><i class="fas fa-users"></i> Users</a></li>
+                        <li><a asp-action="Index" asp-controller="Roles"><i class="fas fa-pencil-ruler"></i>Rolesss </a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    
+    <script asp-src-include="~/vendor/jquery/jquery.min.js"></script>
+    <script asp-src-include="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

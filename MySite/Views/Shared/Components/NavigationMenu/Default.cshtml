@@ -1,0 +1,23 @@
+﻿@model IEnumerable<string>
+
+
+
+<select class="custom-select" id="inputGroupSelect04"
+        aria-label="Example select with button addon"
+        style="font-size:15px" name="category">
+    <option value="All" selected>All</option>
+
+    @foreach (string category in Model)
+    {
+        if (category.Equals(ViewBag.SelectedCategory))
+        {
+            <option value="@category" selected>@category</option>
+        }
+        else
+        {
+            <option value="@category" )>@category</option>
+        }
+
+    }
+</select>
+

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">List Roles</div>
+                    <div class="panel-options">
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        @foreach (var role in Model)
+                        {
+                            <tr>
+                                <td>@role.Name</td>
+                                <td>
+                                    <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        <a asp-action="Create" class="btn btn-sm btn-primary btn-group">Add Role</a>
+                        <a asp-action="UserList" class="btn btn-sm btn-primary btn-group">Users List</a>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
