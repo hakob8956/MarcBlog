@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MySite.Services;
 namespace MySite.Controllers
 {
     public class AccountController : Controller
@@ -40,15 +41,20 @@ namespace MySite.Controllers
 
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year,Date=model.Date};
+                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year, Date = model.Date };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // установка куки
-                    await _signInManager.SignInAsync(user, false);
+                    var resultRole = await _userManager.AddToRoleAsync(user, "user");
+                    if (resultRole.Succeeded)
+                    {
+                         //установка куки
+                        await _signInManager.SignInAsync(user, false);
 
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
                 else
                 {
@@ -60,9 +66,10 @@ namespace MySite.Controllers
             }
             return View(model);
         }
+
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
-        {      
+        {
 
             return View(new LoginModel());
         }
@@ -85,9 +92,7 @@ namespace MySite.Controllers
                     }
                     else
                     {
-
                         return RedirectToAction("Index", "Home");
-
                     }
 
                 }

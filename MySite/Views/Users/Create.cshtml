@@ -5,6 +5,7 @@
 }
 <form asp-action="Create" asp-controller="Users">
     <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="Date" value="@DateTime.Now" />
     <div class="form-group">
         <label asp-for="Email" class="control-label">Email</label>
         <input type="text" asp-for="Email" class="form-control" />

@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Imageflow.Net" Version="0.2.6" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
@@ -33,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="CKFinder">
+      <HintPath>wwwroot\Scripts\ckfinder\bin\Release\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>wwwroot\admin\ckfinder\bin\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
@@ -47,5 +56,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
+  
 
 </Project>

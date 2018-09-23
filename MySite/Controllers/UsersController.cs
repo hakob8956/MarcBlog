@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using MySite.Models;
 using MySite.Models.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using MySite.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
-using MySite.ViewModels;
 
 
 namespace MySite.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {
+
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
@@ -32,11 +34,16 @@ namespace MySite.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year,Date=model.Date};
+                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year, Date = model.Date };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    var resultRole = await _userManager.AddToRoleAsync(user, "user");
+                    if (resultRole.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }                   
                 }
                 else
                 {
@@ -55,7 +62,7 @@ namespace MySite.Controllers
             {
                 return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, Year = user.Year,Date=user.Date };
+            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, Year = user.Year, Date = user.Date };
 
             return View(model);
         }
@@ -71,7 +78,7 @@ namespace MySite.Controllers
                     user.Email = model.Email;
                     user.UserName = model.Email;
                     user.Year = model.Year;
-                    user.Date = model.Date;
+
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {

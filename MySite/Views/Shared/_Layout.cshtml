@@ -38,7 +38,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Start Bootstrap</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Marc  News</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -64,16 +64,23 @@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <form asp-action="Index" asp-controller="Users">
-                                    <button type="submit" class="btn btn-link" style="list-style-type:none">
-
+                                    <button type="submit" class="btn btn-link" style="font-size:12px">
                                         MyProfile
                                     </button>
                                 </form>
-
+                                if (User.IsInRole("admin"))
+                                {
+                                    <form asp-action="Index" asp-controller="Admin">
+                                        <button type="submit" class="btn btn-link" style="font-size:12px">
+                                            Admin Panel
+                                        </button>
+                                    </form>
+                                    
+                                }
 
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
                                 {
-                                    <button type="submit" class="btn btn-link">
+                                    <button type="submit" class="btn btn-link" style="font-size:12px">
                                         Log Out
                                     </button>
                                 }
@@ -96,7 +103,7 @@
                                             Remember me
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" style="padding:5px;width:45%"><p style="font-size:12px;display:inline">Sign in</p></button>
+                                    <button type="submit" class="btn btn-primary normalButton" style="padding:5px;width:45%"><p style="font-size:12px;display:inline">Sign in</p></button>
                                 </form>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-action="Register" asp-controller="Account">New around here? Sign up</a>
@@ -138,7 +145,7 @@
                         </li>
 
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; MyBlog 2018</p>
+                    <p class="copyright text-muted">Copyright &copy; MarcNews 2018</p>
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MySite.Controllers
 {
-   
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
         RoleManager<IdentityRole> _roleManager;
@@ -98,7 +98,7 @@ namespace MySite.Controllers
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-                return RedirectToAction("UserList");
+                return RedirectToAction("Index", "Users");
             }
 
             return NotFound();

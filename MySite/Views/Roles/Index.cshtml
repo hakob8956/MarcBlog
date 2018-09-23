@@ -4,31 +4,34 @@
 @model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
 <div class="col-md-10">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="content-box-large">
                 <div class="panel-heading">
                     <div class="panel-title">List Roles</div>
                     <div class="panel-options">
-
+                        <a asp-action="Create" asp-controller="Roles" style="font-size:large" title="Add Role"><i class="fas fa-plus-circle"></i></a>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table  table-hover">
+                        <tr>
+                            <th>Role Name</th>
+                            <th>Action</th>
+                        </tr>
                         @foreach (var role in Model)
                         {
                             <tr>
                                 <td>@role.Name</td>
                                 <td>
                                     <form asp-action="Delete" asp-route-id="@role.Id" method="post">
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            Delete
+                                        <button type="submit" class="btn btn-sm btn-danger normalButton" title="Delete Role">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </form>
                                 </td>
                             </tr>
                         }
-                        <a asp-action="Create" class="btn btn-sm btn-primary btn-group">Add Role</a>
-                        <a asp-action="UserList" class="btn btn-sm btn-primary btn-group">Users List</a>
+                       
 
                     </table>
                 </div>

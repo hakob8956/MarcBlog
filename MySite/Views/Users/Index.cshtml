@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-hover">
                         <tr>
                             <th scope="col">Email</th>
                             <th scope="col">Year</th>
@@ -30,10 +30,10 @@
                                 <td>@user.Date</td>
                                 <td>
                                     <form asp-action="Delete" asp-route-id="@user.Id" method="post" onsubmit="return ConfirmOnDelete">
-                                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id" title="Edit"><i class="fas fa-user-edit"></i></a>
-                                        <a class="btn btn-sm btn-primary" asp-action="ChangePassword" asp-route-id="@user.Id" title="Change Password"><i class="fas fa-key"></i></a>
-                                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-controller="Roles" asp-route-userid="@user.Id" title="Access rights"><i class="fas fa-universal-access"></i></a>
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                        <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-route-id="@user.Id" title="Edit"><i class="fas fa-user-edit"></i></a>
+                                        <a class="btn btn-sm btn-primary normalButton" asp-action="ChangePassword" asp-route-id="@user.Id" title="Change Password"><i class="fas fa-key"></i></a>
+                                        <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-controller="Roles" asp-route-userid="@user.Id" title="Access rights"><i class="fas fa-universal-access"></i></a>
+                                        <button type="submit" class="btn btn-sm btn-danger normalButton" title="Delete">
                                             <i class="fas fa-user-minus"></i>
                                         </button>
 

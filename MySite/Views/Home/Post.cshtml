@@ -1,7 +1,9 @@
 ﻿@model  Post
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('@Url.Action("GetImage", "Product",
-               new { Model.PostID })')">
+<header class="masthead" style="background-image: url('@Url.Action("GetImage", "Home",
+               new {Model.PostID })')">
+
+   
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -14,6 +16,7 @@
                         <a href="#">@Model.Author</a>
                         on @Model.DateTime
                     </span>
+    
                 </div>
             </div>
         </div>

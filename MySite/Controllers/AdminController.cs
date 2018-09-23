@@ -10,7 +10,7 @@ using System;
 
 namespace MySite.Controllers
 {
-
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         private IPost repository;

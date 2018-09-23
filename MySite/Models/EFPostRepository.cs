@@ -28,12 +28,15 @@ namespace MySite.Models
                     .FirstOrDefault(p => p.PostID == post.PostID);
                 if (dbEntry != null)
                 {
+                    //dbEntry.UserID = post.UserID;
                     dbEntry.Title = post.Title;
                     dbEntry.Description = post.Description;                   
                     dbEntry.Category = post.Category;
                     dbEntry.Text = post.Text;
                     dbEntry.Author = post.Author;
                     dbEntry.DateTime = post.DateTime;
+                    dbEntry.ImageData = post.ImageData;
+                    dbEntry.ImageMimeType = post.ImageMimeType;
                 
                 }
             }

@@ -56,6 +56,19 @@ namespace MySite.Controllers
                 return NotFound();
             }
         }
+        public FileContentResult GetImage(int postID)
+        {
+            Post product = postRepository.Posts.FirstOrDefault(p => p.PostID == postID );
+            if (product != null)
+            {
+                return File(product.ImageData, product.ImageMimeType);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
         public IActionResult About() => View();
         public IActionResult Contact() => View();
         public IActionResult Test() => View();

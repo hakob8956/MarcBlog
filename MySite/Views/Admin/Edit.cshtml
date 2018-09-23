@@ -16,10 +16,11 @@
                     </div>
 
                 </div>
+
                 <div class="panel-body">
 
                     @using (Html.BeginForm("Edit", "Admin",
-          FormMethod.Post, new { enctype = "multipart/form-data" }))
+         FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="panel-body">
                             @Html.HiddenFor(p => p.PostID)
@@ -58,7 +59,7 @@
                             <div class="form-group">
 
                                 <div style="position:relative;">
-                                    <label>Image</label>
+                                    <label>Header Image</label>
                                     <a class='btn' href='javascript:;'>
                                         Select File...
                                         <input type="file" name="Image" size="40"
@@ -83,7 +84,7 @@
                                     {
 
                                         <img class="img-thumbnail" width="150" height="150"
-                                             src="@Url.Action("GetImage", "Product",new { Model.PostID })" />
+                                             src="@Url.Action("GetImage", "Home",new { Model.PostID })" />
                                         @using (Html.BeginForm("DeleteImage", "Admin", FormMethod.Post))
                                         {
                                             @Html.HiddenFor(p => p.PostID)
@@ -99,7 +100,7 @@
                         </div>
                         <div class="panel-footer">
                             <input type="submit" value="Save" class="btn btn-primary" />
-                            <a asp-action="Index" asp-controller="Admin" class="btn btn-danger">Cancel</a>
+                            <a asp-action="Index" asp-controller="Admin" class="btn btn-danger normalButton">Cancel</a>
                         </div>
                     }
 
