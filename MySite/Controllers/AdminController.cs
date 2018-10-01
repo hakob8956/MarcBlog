@@ -7,18 +7,26 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Text.RegularExpressions;
 using System;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MySite.Controllers
 {
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
+        
         private IPost repository;
         public const int ImageMinimumBytes = 512;
+        private readonly UserManager<User> _userManager;
+        private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public AdminController(IPost repository)
+        public AdminController(IPost repository, UserManager<User> userManager)
         {
+            _userManager = userManager;
             this.repository = repository;
+
         }
         public ViewResult Index() => View(repository.Posts);
         public ViewResult Edit(int postID) =>
@@ -27,9 +35,6 @@ namespace MySite.Controllers
         public static bool IsImage(IFormFile postedFile)
         {
 
-            //-------------------------------------------
-            //  Check the image mime types
-            //-------------------------------------------
             if (postedFile.ContentType.ToLower() != "image/jpg" &&
                         postedFile.ContentType.ToLower() != "image/jpeg" &&
                         postedFile.ContentType.ToLower() != "image/pjpeg" &&
@@ -40,9 +45,6 @@ namespace MySite.Controllers
                 return false;
             }
 
-            //-------------------------------------------
-            //  Check the image extension
-            //-------------------------------------------
             if (Path.GetExtension(postedFile.FileName).ToLower() != ".jpg"
                 && Path.GetExtension(postedFile.FileName).ToLower() != ".png"
                 && Path.GetExtension(postedFile.FileName).ToLower() != ".gif"
@@ -50,10 +52,6 @@ namespace MySite.Controllers
             {
                 return false;
             }
-
-            //-------------------------------------------
-            //  Attempt to read the file and check the first bytes
-            //-------------------------------------------
             try
             {
                 if (!postedFile.OpenReadStream().CanRead)
@@ -79,6 +77,7 @@ namespace MySite.Controllers
             {
                 return false;
             }
+    
             return true;
         }
         [HttpPost]
@@ -95,8 +94,8 @@ namespace MySite.Controllers
             return View("Edit", postID);
         }
         [HttpPost]
-        public IActionResult Edit(Post post, IFormFile image = null)
-        {
+        public  async Task<IActionResult> Edit(Post post, IFormFile image = null)
+        {         
             if (ModelState.IsValid)
             {
                 if (image != null)
@@ -114,6 +113,9 @@ namespace MySite.Controllers
                     }
 
                 }
+                var user = await GetCurrentUserAsync();
+                post.UserID = user.Id;
+                post.DateTime = DateTime.Now;
                 repository.SaveProduct(post);
                 TempData["message"] = $"{post.Title} has been saved";
                 return RedirectToAction("Index");

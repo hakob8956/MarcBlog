@@ -33,15 +33,24 @@
                 <div class="site-heading">
                     <h1>Marc News</h1>
                     <span class="subheading">Օnly fresh news</span>
-</div>
+                </div>
             </div>
         </div>
     </div>
 </header>
 <!-- Main Content -->
 <div class="container">
+    @{ 
+        BreadcrumbViewModel broad = new BreadcrumbViewModel()
+        {
+            Active = true,
+            Category = Model.CurrentCategory
+        };
+    }
+    @Html.Partial("ShowBreadcrumb",broad)
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
+        
         <div class="d-flex flex-row bd-highlight mb-3">
             <div class="p-2 bd-highlight" style="width:160px">
                 @*@await Component.InvokeAsync("NavigationMenu")*@
@@ -86,7 +95,7 @@
     <hr />
 
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-11 col-md-10 mx-auto">
             @foreach (var p in Model.Posts)
             {
                 @Html.Partial("ShowBlocksPartial", p)
@@ -98,6 +107,7 @@
         </div>
 
     </div>
+
     <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
          page-class="btn" page-class-normal="btn-default"
          page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"

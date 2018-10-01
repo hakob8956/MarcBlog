@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
+using System;
 namespace MySite.Models
 {
     public static class SeedData
     {
         public static void EnsurePopulated(IApplicationBuilder app)
         {
+            
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
             using (var scope = scopeFactory.CreateScope())
             {
@@ -20,7 +22,8 @@ namespace MySite.Models
                             Description = "Description1",
                             Category = "Category1",
                             Text = "Hiiii Fack1",
-                            Author = "MyBlog"
+                            Author = "MyBlog",
+                            DateTime = DateTime.Now
 
                         },
                          new Post
@@ -29,7 +32,8 @@ namespace MySite.Models
                              Description = "Description2",
                              Category = "Category2",
                              Text = "Hiiii Fack2",
-                             Author = "MyBlog"
+                             Author = "MyBlog",
+                             DateTime = DateTime.Now
                          },
                           new Post
                           {
@@ -37,47 +41,53 @@ namespace MySite.Models
                               Description = "Description3",
                               Category = "Category3",
                               Text = "Hiiii Fack3",
-                              Author = "MyBlog"
+                              Author = "MyBlog",
+                              DateTime = DateTime.Now
                           },
                            new Post
                            {
-                               Title = "MySite2",
+                               Title = "MySite4",
                                Description = "Description2",
                                Category = "Category2",
                                Text = "Hiiii Fack2",
-                               Author = "MyBlog"
+                               Author = "MyBlog",
+                             DateTime = DateTime.Now
                            },
                           new Post
                           {
-                              Title = "MySite3",
+                              Title = "MySite5",
                               Description = "Description3",
                               Category = "Category3",
                               Text = "Hiiii Fack3",
-                              Author = "MyBlog"
+                              Author = "MyBlog",
+                              DateTime = DateTime.Now
                           },
                            new Post
                            {
-                               Title = "MySite2",
+                               Title = "MySite6",
                                Description = "Description2",
                                Category = "Category2",
                                Text = "Hiiii Fack2",
-                               Author = "MyBlog"
+                               Author = "MyBlog",
+                               DateTime = DateTime.Now
                            },
                           new Post
                           {
-                              Title = "MySite3",
+                              Title = "MySite7",
                               Description = "Description3",
                               Category = "Category3",
                               Text = "Hiiii Fack3",
-                              Author = "MyBlog"
+                              Author = "MyBlog",
+                              DateTime = DateTime.Now
                           },
                            new Post
                            {
-                               Title = "MySite3",
+                               Title = "MySite8",
                                Description = "Description4",
                                Category = "Category4",
                                Text = "Hiiii Fack4",
-                               Author = "MyBlog"
+                               Author = "MyBlog",
+                               DateTime = DateTime.Now
                            }
 
                         );

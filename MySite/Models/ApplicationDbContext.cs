@@ -13,6 +13,7 @@ namespace MySite.Models
             : base(options) { }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Folower> Folowers { get; set; }
 
     }
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>

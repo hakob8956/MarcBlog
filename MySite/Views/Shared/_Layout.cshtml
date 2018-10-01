@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>My Blog</title>
 
+    <noscript><div><img src="https://mc.yandex.ru/watch/50469865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <!-- Bootstrap core CSS -->
     <link asp-href-include="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -14,26 +16,13 @@
     <!-- Custom styles for this template -->
     <link asp-href-include="~/css/clean-blog.min.css" rel="stylesheet">
     <script asp-src-include="~/admin/ckeditor/ckeditor.js"></script>
+    
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 </head>
 <body>
     <style>
-        .btn-link:hover, .btn-link:focus {
-            color: #2DA4E1;
-            text-decoration: none;
-        }
-
-        .btn-link {
-            color: #16181b;
-        }
-
-        .dropdown:hover > .dropdown-menu {
-            display: block;
-        }
-
-        .dropdown > .dropdown-menu {
-            display: none;
-        }
     </style>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -63,7 +52,7 @@
                         <div class="dropdown-menu dropdown-menu-right" style="background-color:#F1F3F4">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <form asp-action="Index" asp-controller="Users">
+                                <form asp-action="Index" asp-controller="Profile">
                                     <button type="submit" class="btn btn-link" style="font-size:12px">
                                         MyProfile
                                     </button>
@@ -75,7 +64,7 @@
                                             Admin Panel
                                         </button>
                                     </form>
-                                    
+
                                 }
 
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
@@ -111,8 +100,6 @@
                             }
                         </div>
                     </li>
-
-
                 </ul>
             </div>
         </div>
@@ -143,7 +130,6 @@
                                 </span>
                             </a>
                         </li>
-
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; MarcNews 2018</p>
                 </div>
@@ -152,8 +138,30 @@
     </footer>
     <!-- Bootstrap core JavaScript -->
     <script asp-src-include="~/vendor/jquery/jquery.min.js"></script>
+    <script asp-src-include="~/vendor/jquery-validation/dist/*.min.js"></script>
+    <script asp-src-include="~/vendor/jquery-validation-unobtrusive/*.min.js"></script>
     <script asp-src-include="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Custom scripts for this template -->
     <script asp-src-include="~/js/clean-blog.min.js"></script>
 </body>
 </html>
+
+<style>
+    .btn-link:hover, .btn-link:focus {
+        color: #2DA4E1;
+        text-decoration: none;
+    }
+
+    .btn-link {
+        color: #16181b;
+    }
+
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown > .dropdown-menu {
+        display: none;
+    }
+
+</style>

@@ -6,6 +6,6 @@ namespace MySite.Models
     {
         public int Year { get; set; }
         public string Date { get; set; }
-
+        
     }
 }

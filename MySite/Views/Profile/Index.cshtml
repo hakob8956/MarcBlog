@@ -1,1 +1,20 @@
-﻿
+﻿@model ProfileViewModel
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('@Url.Content("~/img/home-bg.jpg")')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Marc News</h1>
+                    <span class="subheading">Օnly fresh news</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <h1> Your Email:@Model.email</h1>
+    <h1>Your ID:@Model.Profile.UserID</h1>
+</div>

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +20,10 @@
     <Compile Remove="Migrations\20180921110611_Initial.Designer.cs" />
     <Compile Remove="Migrations\20180921131546_Initial.cs" />
     <Compile Remove="Migrations\20180921131546_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180921203241_Initial.cs" />
+    <Compile Remove="Migrations\20180921203241_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180924183334_Initial.cs" />
+    <Compile Remove="Migrations\20180924183334_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,13 +39,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="CKFinder">
-      <HintPath>wwwroot\Scripts\ckfinder\bin\Release\CKFinder.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>wwwroot\admin\ckfinder\bin\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>

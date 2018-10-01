@@ -17,10 +17,10 @@
         background-color:whitesmoke;
     }
 </style>
-<div class="container text-center" >
+<div class="container text-center">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
     {
-
+        @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" value="@DateTime.Now" name="Date" />
         <div class="form-group">

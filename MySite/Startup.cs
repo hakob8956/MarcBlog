@@ -44,8 +44,10 @@ namespace MySite
             services.Configure<SecurityStampValidatorOptions>(options => { options.ValidationInterval = TimeSpan.FromMinutes(10); });
 
             services.AddTransient<IPost, EFPostRepository>();
+            services.AddTransient<IProfile, EFProfileRepository>();
+            services.AddTransient<IFolower, EFFolowerRepository>();
 
- 
+
             services.AddMvc();
         }
 
@@ -58,46 +60,48 @@ namespace MySite
                 app.UseStatusCodePages();
             }
             app.UseAuthentication();
+
             app.UseStaticFiles();
 #pragma warning disable CS0618 // Type or member is obsolete
             app.UseIdentity();
 #pragma warning restore CS0618 // Type or member is obsolete
+            app.UseMvcWithDefaultRoute();
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(name: "Error", template: "Error",
+            //        defaults: new { controller = "Error", action = "Error" });
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(name: "Error", template: "Error",
-                    defaults: new { controller = "Error", action = "Error" });
+            //    routes.MapRoute(
+            //        name: null,
+            //        template: "Admin/{action}",
+            //        defaults: new { controller = "Admin", action = "Index" }
+            //        );
 
-                routes.MapRoute(
-                    name:null,
-                    template:"Admin/{action}",
-                    defaults: new {controller="Admin",action="Index"}
-                    );
-               
-                routes.MapRoute(
-                    name: null,
-                    template: "{category}/Page{page:int}",
-                    defaults: new { controller = "Home", action = "Index" }
-                );
 
-                routes.MapRoute(
-                    name: null,
-                    template: "Page{page:int}",
-                    defaults: new { controller = "Home", action = "Index", page = 1 }
-                );
-                routes.MapRoute(
-                    name: null,
-                    template: "{category}",
-                    defaults: new { controller = "Home", action = "Index", page = 1 }
-                );
+            //    //routes.MapRoute(
+            //    //    name: null,
+            //    //    template: "{category:string}/{page:int}",
+            //    //    defaults: new { controller = "Home", action = "Index"}
+            //    //);
 
-                routes.MapRoute(
-                    name: null,
-                    template: "",
-                    defaults: new { controller = "Home", action = "Index", page = 1 });
+            //    routes.MapRoute(
+            //        name: null,
+            //        template: "Page{page:int}",
+            //        defaults: new { controller = "Home", action = "Index", page = 1 }
+            //    );
+            //    routes.MapRoute(
+            //        name: null,
+            //        template: "{category}",
+            //        defaults: new { controller = "Home", action = "Index", page = 1 }
+            //    );
 
-                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-            });
+            //    routes.MapRoute(
+            //        name: null,
+            //        template: "",
+            //        defaults: new { controller = "Home", action = "Index", page = 1 });
+
+            //    routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
+            //});
             SeedData.EnsurePopulated(app);
         }
     }

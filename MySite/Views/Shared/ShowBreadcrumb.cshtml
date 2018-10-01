@@ -1,0 +1,36 @@
+﻿@model BreadcrumbViewModel
+
+<nav aria-label="breadcrumb" style="margin-top:-50px">
+    <small>
+        <ol class="breadcrumb" style="background-color:white">
+            <li class="breadcrumb-item" href="#"><a asp-controller="Home" asp-action="Index" class="alert-link">Home</a></li>
+            @if (!Model.Active)
+            {
+                <li class="breadcrumb-item" aria-current="page"><a class="alert-link" asp-controller="Home" asp-action="Index" asp-route-category="@Model.Category">@Model.Category</a></li>
+            }
+            else
+            {
+                <li class="breadcrumb-item active" aria-current="page"><a class="alert-link" href="#" id="activeImage">@Model.Category</a></li>
+
+            }
+            @if (Model.CurrentName != null)
+            {
+                <li class="breadcrumb-item active alert-link" aria-current="page"><a id="active" href="#">@Model.CurrentName</a></li>
+            }
+        </ol>
+    </small>
+</nav>
+<style>
+    .breadcrumb a:hover, a:focus {
+        text-decoration: none;
+        color: #0085A1;
+    }
+
+    #active {
+        color: #6C757D;
+    }
+
+    #active:hover {
+        color: #424B53;
+    }
+</style>

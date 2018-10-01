@@ -31,7 +31,7 @@ namespace MySite.Controllers
             return View();
         }
         [HttpPost]
-
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
             if (User.Identity.IsAuthenticated)
@@ -75,7 +75,7 @@ namespace MySite.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)

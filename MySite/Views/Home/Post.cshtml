@@ -1,34 +1,104 @@
-﻿@model  Post
+﻿@model PostContentViewModel
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('@Url.Action("GetImage", "Home",
-               new {Model.PostID })')">
+               new {Model.Post.PostID })')">
 
-   
+
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="post-heading">
-                    <h1>@Model.Title</h1>
-                    <h2 class="subheading" name="description">@Html.Raw(Model.Description)</h2>
+                <div class="post-heading ">
+                    <h1>@Model.Post.Title</h1>
+                    <h2 class="subheading" name="description">@Html.Raw(Model.Post.Description)</h2>
                     <span class="meta">
-                        Posted by 
-                        <a href="#">@Model.Author</a>
-                        on @Model.DateTime
+                        Posted by
+                        <a href="#">@Model.Post.Author</a>
+                        on @Model.Post.DateTime.ToShortDateString()
                     </span>
-    
                 </div>
+                <span class="fa-pull-right">
+                    <form asp-action="AddFolower" asp-controller="Profile" id="myForm">
+                        <input type="hidden" name="postID" id="postID" value="@Model.Post.PostID" />
+                        <input type="hidden" name="returnUrl" id="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <button class="btn  btn-primary btn-sm" style="width:125px;height:20px" id="subscribe" type="submit">
+                            @if (Model.isSubscribe)  {<p style="margin-top:-10px;margin-left:-16px;color:#C0C0C0" id="mySubText">Subscribed:@Model.PostFavorites</p> }
+                            @if (!Model.isSubscribe) { <p style="margin-top:-10px;margin-left:-16px" id="mySubText">Subscribe:@Model.PostFavorites</p>}
+                        </button>
+                    </form>
+
+                </span>
+
             </div>
+
         </div>
     </div>
 </header>
+@{
+    BreadcrumbViewModel broad = new BreadcrumbViewModel()
+    {
+        Active = false,
+        Category = Model.Post.Category,
+        CurrentName = Model.Post.Title
 
+    };
+}
+@Html.Partial("ShowBreadcrumb", broad)
 <!-- Post Content -->
 <article>
     <div class="container">
-        <div class="row" >
-           @Html.Raw(Model.Text)
+        <div class="row">
+            @Html.Raw(Model.Post.Text)
         </div>
     </div>
 </article>
 <hr>
+
+@*<script type="text/javascript">
+        $("#target").submit(function (event) {
+            alert("Handler for .submit() called.");
+            event.preventDefault();
+        });
+    </script>*@
+<script type="text/javascript">
+    var countFolower = Number(@Model.PostFavorites);
+    $("#myForm").submit(function (event) {
+        console.log("Working");
+        event.preventDefault();
+        var testData =
+        {
+            'postID': $("#postID").val(),
+            'TestStr2': $("#returnUrl").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SubAjax","Profile")',
+            data: JSON.stringify(testData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: successFunc,
+            error: errorFunc
+        });
+    });
+    function successFunc(data, status) {
+        var sub = document.getElementById("mySubText");
+        if (data === "Add") {
+
+            sub.innerHTML = "Subscribed:" + (countFolower += 1);
+            sub.style.color = "#C0C0C0";
+
+
+        } else if (data === "Delete") {
+
+            sub.innerHTML = "Subscribe :" + (countFolower -= 1);
+            sub.style.color = "#FFFFFF";
+        } else if (data === "NewUser") {
+            alert("Please Register or Login");
+        }
+    }
+
+    function errorFunc(errorData) {
+        alert('Ошибка' + errorData.responseText);
+    }
+</script>

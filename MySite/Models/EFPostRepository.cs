@@ -28,7 +28,7 @@ namespace MySite.Models
                     .FirstOrDefault(p => p.PostID == post.PostID);
                 if (dbEntry != null)
                 {
-                    //dbEntry.UserID = post.UserID;
+                    dbEntry.UserID = post.UserID;
                     dbEntry.Title = post.Title;
                     dbEntry.Description = post.Description;                   
                     dbEntry.Category = post.Category;

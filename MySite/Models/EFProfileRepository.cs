@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MySite.Models
 {
-    public class EFProfileRepository 
+    public class EFProfileRepository :IProfile
     {
         private ApplicationDbContext context;
 
@@ -16,7 +16,7 @@ namespace MySite.Models
 
         public IEnumerable<Profile> Profiles => context.Profiles;
 
-        public void SaveProduct(Profile profile)
+        public void SaveProfile(Profile profile)
         {
             if (profile.ProfileID == 0)
             {
@@ -38,16 +38,18 @@ namespace MySite.Models
             context.SaveChanges();
         }
 
-        public Post DeletePost(int postID)
+        public Profile DeleteProfile(int profileID)
         {
-            Post dbEntry = context.Posts
-                .FirstOrDefault(p => p.PostID == postID);
+            Profile dbEntry = context.Profiles
+                .FirstOrDefault(p => p.ProfileID == profileID);
             if (dbEntry != null)
             {
-                context.Posts.Remove(dbEntry);
+                context.Profiles.Remove(dbEntry);
                 context.SaveChanges();
             }
             return dbEntry;
         }
+
+     
     }
 }

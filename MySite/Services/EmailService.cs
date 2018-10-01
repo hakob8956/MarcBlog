@@ -9,7 +9,7 @@ namespace MySite.Services
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress("Administration Site", "hakob8558@yandex.ru"));
+            emailMessage.From.Add(new MailboxAddress("Administration Site", "hakob.nersesyan@gmail.com"));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -19,9 +19,10 @@ namespace MySite.Services
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("smtp.yandex.ru", 465, false);
-                
-                await client.AuthenticateAsync("hakob8558@yandex.ru", "H132465798852h1");
+                await client.ConnectAsync("smtp.gmail.com",465, false);
+
+
+                await client.AuthenticateAsync("hakob.nersesyan@gmail.com", "Hakob132465798852h");
                 await client.SendAsync(emailMessage);
 
                 await client.DisconnectAsync(true);

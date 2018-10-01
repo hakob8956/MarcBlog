@@ -129,6 +129,21 @@ namespace MySite.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("MySite.Models.Folower", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FolowerID");
+
+                    b.Property<string>("UserID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Folowers");
+                });
+
             modelBuilder.Entity("MySite.Models.Post", b =>
                 {
                     b.Property<int>("PostID")
@@ -155,11 +170,32 @@ namespace MySite.Migrations
                     b.Property<string>("Title")
                         .IsRequired();
 
-                    b.Property<int>("UserID");
+                    b.Property<string>("UserID");
 
                     b.HasKey("PostID");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("MySite.Models.Profile", b =>
+                {
+                    b.Property<int>("ProfileID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<int>("Folowers");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("UserID");
+
+                    b.Property<int>("Viewers");
+
+                    b.HasKey("ProfileID");
+
+                    b.ToTable("Profiles");
                 });
 
             modelBuilder.Entity("MySite.Models.User", b =>

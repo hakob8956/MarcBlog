@@ -1,18 +1,86 @@
 ﻿@model Post
+@*<div class="post-preview">
+        <img class="post-preview" src="~/img/about-bg.jpg" style="height:100px;width:100px" />
 
-<div class="post-preview">
-    <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID">
-        <h2 class="post-title">
-            @Model.Title
-        </h2>
-        <h3 class="post-subtitle">
-           @Html.Raw(Model.Description)
-        </h3>
+        <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+            <h2 class="post-title">
+                @Model.Title
+            </h2>
+            <h3 class="post-subtitle">
+               @Html.Raw(Model.Description)
+            </h3>
+        </a>
+        <p class="post-meta">
+            Posted by
+            <a href="#">@Model.Author</a>
+            on @Model.DateTime.Month
+        </p>
+    </div>*@
+<div class="card mb-5 border-0" style="back">
+    <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()" class="card-link">
+        @if (Model.ImageData != null && Model.ImageMimeType != null)
+        {
+            <img class="card-img-top hoverImage" src="@Url.Action("GetImage", "Home" ,
+                 new {Model.PostID })" width="720" height="170" alt="Card image cap">
+        }
+        else
+        {
+            <img class="card-img-top hoverImage" src="https://picsum.photos/723/170/?random" alt="Card image cap">
+        }
+
     </a>
-    <p class="post-meta">
-        Posted by
-        <a href="#">@Model.Author</a>
-        on @Model.DateTime.Month
-    </p>
+    <div class="card-body">
+        <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()" class="card-link">
+
+            <h5 class="card-title">@Model.Title</h5>
+        </a>
+        <p class="card-text">@Html.Raw(Model.Description)</p>
+
+        <p class="post-meta float-right">
+
+            <small class="text-muted">
+                Posted by
+                <a href="#">@Model.Author</a>
+
+            </small>
+        </p>
+        @{
+            int last = (int)DateTime.Now.Subtract(Model.DateTime).TotalMinutes;
+            string lastText = "mins";
+
+            //var last = int.Parse(time);
+
+            if (last >= 60 && lastText == "mins")
+            {
+                last = last / 60;
+                lastText = "hour";
+            }
+            if (last >= 24 && lastText == "hour")
+            {
+                last = last / 24;
+                lastText = "day";
+            }
+            if (last >= 30 && lastText == "day")
+            {
+                last = last / 30;
+                lastText = "month";
+            }
+            if (last >= 12 && lastText == "month")
+            {
+                last = last / 12;
+                lastText = "year";
+            }
+
+        }
+        <p class="card-text"><small class="text-muted">Last updated @last @lastText ago</small></p>
+    </div>
 </div>
 <hr>
+
+<style>
+    .hoverImage:hover {
+        -moz-box-shadow: 0 0 12px #c2a3a3;
+        -webkit-box-shadow: 0 0 12px #c2a3a3;
+        box-shadow: 0 0 12px #c2a3a3;
+    }
+</style>
