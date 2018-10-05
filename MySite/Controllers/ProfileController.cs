@@ -30,25 +30,50 @@ namespace MySite.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
-
-            Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
-            if (MyProfile == null)
+            if (user != null)
             {
-                _profile.SaveProfile(new Profile()
+                Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
+                //if (MyProfile == null)
+                //{
+                //    _profile.SaveProfile(new Profile()
+                //    {
+                //        UserID = user.Id
+                //    });
+                //    MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
+                //}
+
+                ProfileViewModel profileModel = new ProfileViewModel()
                 {
-                    UserID = user.Id
-                });
-                MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
-            }
+                    Profile = MyProfile,
+                    email = user.Email
 
-            ProfileViewModel profileModel = new ProfileViewModel()
+
+                };
+                return View(profileModel);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Profile model)
+        {
+            var CurrentUser = await GetCurrentUserAsync();
+            if (CurrentUser != null && ModelState.IsValid)
             {
-                Profile = MyProfile,
-                email = user.Email
-                
-                
+                var profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == model.ProfileID);
+                profile.FirstName = model.FirstName;
+                profile.LastName = model.LastName;
+                profile.ProfileID = model.ProfileID;
+                _profile.SaveProfile(profile);
+            
+                return RedirectToAction("Index");
+            }
+            ProfileViewModel viewModel = new ProfileViewModel()
+            {
+                email = CurrentUser.Email,
+                Profile = model
             };
-            return View(profileModel);
+            return View("Index", viewModel);
         }
         [HttpPost]
         public async Task<JsonResult> SubAjax([FromBody]AjaxPostViewModel model)
@@ -80,7 +105,7 @@ namespace MySite.Controllers
                     {
                         FolowerID = FolowerProfile.UserID,
                         UserID = CurrentUser.Id
-                      
+
                     };
                     _folower.AddFolower(modelFolower);
                     return Json("Add");
@@ -90,48 +115,48 @@ namespace MySite.Controllers
             {
                 return Json("NewUser");
             }
- 
+
             return Json("Error");
         }
-        //NOT Found fix
-        [HttpPost]
-        public async Task<IActionResult> AddFolower(int postID, string returnUrl)
-        {
 
-            var CurrentUser = await GetCurrentUserAsync();
-            var FolowerProfile = _post.Posts.FirstOrDefault(p => p.PostID == postID);
-            if (CurrentUser != null && FolowerProfile != null)
-            {
-                if (!Url.IsLocalUrl(returnUrl))
-                {
-                    returnUrl = "/";
-                }
-                var folower = _folower.Folowers.Where(i => i.FolowerID.Equals(FolowerProfile.UserID));
-                if (folower != null)
-                {
-                    if (CurrentUser.Id.Equals(FolowerProfile.UserID))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    foreach (var item in folower)
-                    {
-                        if (item.UserID.Equals(CurrentUser.Id))
-                        {
-                            _folower.DeleteFolower(item.ID);
-                            return Redirect(returnUrl);
-                        }
-                    }
-                    Folower modelFolower = new Folower()
-                    {
-                        FolowerID = FolowerProfile.UserID,
-                        UserID = CurrentUser.Id
-                    };
-                    _folower.AddFolower(modelFolower);
-                }
-            }
-          
-            return Redirect(returnUrl);
-        }
+        ////NOT Found fix
+        //[HttpPost]
+        //public async Task<IActionResult> AddFolower(int postID, string returnUrl)
+        //{
 
+        //    var CurrentUser = await GetCurrentUserAsync();
+        //    var FolowerProfile = _post.Posts.FirstOrDefault(p => p.PostID == postID);
+        //    if (CurrentUser != null && FolowerProfile != null)
+        //    {
+        //        if (!Url.IsLocalUrl(returnUrl))
+        //        {
+        //            returnUrl = "/";
+        //        }
+        //        var folower = _folower.Folowers.Where(i => i.FolowerID.Equals(FolowerProfile.UserID));
+        //        if (folower != null)
+        //        {
+        //            if (CurrentUser.Id.Equals(FolowerProfile.UserID))
+        //            {
+        //                return Redirect(returnUrl);
+        //            }
+        //            foreach (var item in folower)
+        //            {
+        //                if (item.UserID.Equals(CurrentUser.Id))
+        //                {
+        //                    _folower.DeleteFolower(item.ID);
+        //                    return Redirect(returnUrl);
+        //                }
+        //            }
+        //            Folower modelFolower = new Folower()
+        //            {
+        //                FolowerID = FolowerProfile.UserID,
+        //                UserID = CurrentUser.Id
+        //            };
+        //            _folower.AddFolower(modelFolower);
+        //        }
+        //    }
+
+        //    return Redirect(returnUrl);
+        //}
     }
 }

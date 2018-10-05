@@ -1,13 +1,18 @@
 ﻿@model ProfileViewModel
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('@Url.Content("~/img/home-bg.jpg")')">
+<header class="masthead" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Marc News</h1>
-                    <span class="subheading">Օnly fresh news</span>
+                    @{ string hi = Model.Profile.FirstName == null ? Model.email : Model.Profile.FirstName;}
+                    <h1>@hi</h1>
+                    <span class="subheading">FirstName: @Model.Profile.FirstName</span>
+                    <span class="subheading">LastName: @Model.Profile.LastName</span>
+                    <span class="subheading">Email: @Model.email</span>
+                    <span class="subheading">Viewers: @Model.Profile.Viewers</span>
+                    <span class="subheading">Folowers: @Model.Profile.Folowers</span>
                 </div>
             </div>
         </div>
@@ -15,6 +20,104 @@
 </header>
 <!-- Main Content -->
 <div class="container">
-    <h1> Your Email:@Model.email</h1>
-    <h1>Your ID:@Model.Profile.UserID</h1>
+
+    <div class="row">
+        <div class="col">
+            <div class="card border-0" style="width: 18rem;">
+                <h5 class="card-title text-center card_title">Card title</h5>
+                <img class="card-img-top " src="https://picsum.photos/300/250" alt="Card image cap" height="250">
+                <div class="card-body">
+                    <p class="card-text">Description.....</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <form asp-action="Edit" asp-controller="Profile" id="myForm">
+                <table class="table border-0">
+                    <thead>
+                        <tr>
+                            <th class="text-center card_title" colspan="2">UserName</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>FirstName</td>
+                            <input type="hidden" name="ProfileID" value="@Model.Profile.ProfileID" />
+
+                            <td><input type="text" name="FirstName" placeholder="@Model.Profile.FirstName" /> </td>
+
+
+
+                        </tr>
+                        <tr>
+                            <td>LastName</td>
+                            <td><input type="text" name="LastName" placeholder="@Model.Profile.LastName" /></td>
+                        </tr>
+                        <tr>
+                            <td>Folowers</td>
+                            <td>@Model.Profile.Folowers</td>
+                        </tr>
+                        <tr>
+                            <td>Views</td>
+                            <td>@Model.Profile.Viewers</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.ValidationSummary()</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <button type="submit" class="btn btn-light btn-sm">Save</button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    </div>
+
+
 </div>
+<style>
+    .card_title {
+        color: #323B50;
+    }
+
+        .card_title:hover {
+            cursor: default;
+            color: #2B3449;
+        }
+</style>
+@*<script type="text/javascript">
+
+        $("#myForm").submit(function (event) {
+            console.log("Working");
+            event.preventDefault();
+            var testData =
+            {
+                'FirstName': $("#FirstName").val(),
+                'LastName': $("#LastName").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SubAjax","Profile")',
+                data: JSON.stringify(testData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+        });
+        function successFunc(data, status) {
+
+        }
+
+        function errorFunc(errorData) {
+            alert('Ошибка' + errorData.responseText);
+        }
+    </script>*@

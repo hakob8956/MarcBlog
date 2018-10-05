@@ -55,20 +55,20 @@ namespace MySite.Controllers
 
         public async Task<IActionResult> Post(int postID, string returnUrl)
         {
-            var Post = _postRepository?.Posts.FirstOrDefault(p => p.PostID == postID);
-            var PostUser = _userManager?.Users.FirstOrDefault(p => p.Id.Equals(Post.UserID));
+            var Post = _postRepository?.Posts?.FirstOrDefault(p => p.PostID == postID);
+            var PostUser = _userManager?.Users?.FirstOrDefault(p => p.Id.Equals(Post.UserID));
             var currentUser = await GetCurrentUserAsync();
             var userId = currentUser?.Id;
-            var FolowerProfile = _profile?.Profiles.FirstOrDefault(p => p.UserID == PostUser.Id);
-            var ProfileFolowers = _folower?.Folowers.Where(i => i.FolowerID.Equals(FolowerProfile.UserID));
+            var FolowerProfile = _profile?.Profiles?.FirstOrDefault(p => p?.UserID == PostUser?.Id);
+            var ProfileFolowers = _folower?.Folowers?.Where(i => i.FolowerID.Equals(FolowerProfile?.UserID));
             bool _isSubscribe = false;
-            if (FolowerProfile != null && currentUser != null)
+            if (currentUser != null)
             {
-                if (userId.Equals(FolowerProfile.UserID))
+                if (FolowerProfile!=null && userId.Equals(FolowerProfile.UserID))
                 {
                     _isSubscribe = true;
                 }
-                else
+                else if(ProfileFolowers != null)
                 {
                     foreach (var item in ProfileFolowers)
                     {
@@ -93,7 +93,7 @@ namespace MySite.Controllers
             }
             else
             {
-                return NotFound();
+                return BadRequest();
             }
         }
         public FileContentResult GetImage(int postID)

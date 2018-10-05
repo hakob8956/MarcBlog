@@ -10,7 +10,7 @@ using MySite.Models;
 namespace MySite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180925112538_Initial")]
+    [Migration("20181003204932_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,14 +160,16 @@ namespace MySite.Migrations
                     b.Property<DateTime>("DateTime");
 
                     b.Property<string>("Description")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(180);
 
                     b.Property<byte[]>("ImageData");
 
                     b.Property<string>("ImageMimeType");
 
                     b.Property<string>("Text")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(30000);
 
                     b.Property<string>("Title")
                         .IsRequired();
@@ -188,6 +190,10 @@ namespace MySite.Migrations
                     b.Property<string>("FirstName");
 
                     b.Property<int>("Folowers");
+
+                    b.Property<byte[]>("ImageData");
+
+                    b.Property<string>("ImageMimeType");
 
                     b.Property<string>("LastName");
 

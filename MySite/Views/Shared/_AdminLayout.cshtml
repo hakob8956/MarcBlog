@@ -10,6 +10,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" asp-href-include="~/admin/css/styles.css" />
     <script asp-src-include="~/admin/ckeditor/ckeditor.js"></script>
+    <script asp-src-include="~/vendor/jquery/jquery.min.js"></script>
+
     <style>
         #logo {
             color: #e1c9c9 !important;
@@ -35,7 +37,7 @@
                     Admin Panel
                 </a>
                 <div class="form-inline my-2 my-lg-0">
-                    
+
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">
                         My Account
                     </a>
@@ -43,7 +45,7 @@
                         <a class="dropdown-item" href="#">My Profile</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Admin">Admin Panel</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Home" style="color:#D92420">Exit</a>
-                        
+
                     </div>
                 </div>
 
@@ -70,8 +72,8 @@
     </div>
 
 
-    <script asp-src-include="~/vendor/jquery/jquery.min.js"></script>
     <script asp-src-include="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script asp-src-include="~/bootstrap-confirmation2/dist/*.min.js"></script>
 
 </body>
 </html>

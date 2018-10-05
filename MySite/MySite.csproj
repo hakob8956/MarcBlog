@@ -24,6 +24,8 @@
     <Compile Remove="Migrations\20180921203241_Initial.Designer.cs" />
     <Compile Remove="Migrations\20180924183334_Initial.cs" />
     <Compile Remove="Migrations\20180924183334_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180925112538_Initial.cs" />
+    <Compile Remove="Migrations\20180925112538_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,7 +58,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.js" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.js.map" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.min.js" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.min.js.map" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\README.md" />
+    <None Include="wwwroot\vendor\bootstrap-confirmation2\src\confirmation.js" />
   </ItemGroup>
   
 

@@ -22,7 +22,8 @@ namespace RolesInitializerApp
                 {
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager);
+                    var profile = services.GetRequiredService<IProfile>();
+                    await RoleInitializer.InitializeAsync(userManager, rolesManager,profile);
                 }
                 catch (Exception ex)
                 {

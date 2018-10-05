@@ -6,6 +6,7 @@ using MySite.Models;
 using MySite.Models.ViewModels;
 using MySite.ViewModels;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 
@@ -17,11 +18,13 @@ namespace MySite.Controllers
 
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -147,6 +150,7 @@ namespace MySite.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
+          
             if (user != null)
             {
                 var result = await _userManager.DeleteAsync(user);
@@ -154,6 +158,7 @@ namespace MySite.Controllers
             }
             return RedirectToAction("Index");
         }
+       
 
     }
 }

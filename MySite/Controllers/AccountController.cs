@@ -13,11 +13,15 @@ namespace MySite.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IProfile _profile;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,IProfile profile)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _profile = profile;
+           
         }
         [HttpGet]
 
@@ -49,8 +53,13 @@ namespace MySite.Controllers
                     var resultRole = await _userManager.AddToRoleAsync(user, "user");
                     if (resultRole.Succeeded)
                     {
-                         //установка куки
+                        Profile profile = new Profile() { UserID = user.Id };
+                        _profile.SaveProfile(profile);
+                        
+                        //установка куки
                         await _signInManager.SignInAsync(user, false);
+
+                      
 
                         return RedirectToAction("Index", "Home");
                     }

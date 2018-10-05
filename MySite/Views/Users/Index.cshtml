@@ -29,11 +29,12 @@
                                 <td>@user.Year</td>
                                 <td>@user.Date</td>
                                 <td>
-                                    <form asp-action="Delete" asp-route-id="@user.Id" method="post" onsubmit="return ConfirmOnDelete">
+                                    <form asp-action="Delete" asp-route-id="@user.Id" method="post" id="myForm">
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-route-id="@user.Id" title="Edit"><i class="fas fa-user-edit"></i></a>
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="ChangePassword" asp-route-id="@user.Id" title="Change Password"><i class="fas fa-key"></i></a>
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-controller="Roles" asp-route-userid="@user.Id" title="Access rights"><i class="fas fa-universal-access"></i></a>
-                                        <button type="submit" class="btn btn-sm btn-danger normalButton" title="Delete">
+
+                                        <button class="btn btn-sm btn-danger normalButton" title="Delete" type="submit">
                                             <i class="fas fa-user-minus"></i>
                                         </button>
 
@@ -49,12 +50,3 @@
     </div>
 </div>
 
-
-<script type="text/javascript">
-    function ConfirmOnDelete() {
-        if (confirm("Are you sure?") == true)
-            return true;
-        else
-            return false;
-    }
-</script>

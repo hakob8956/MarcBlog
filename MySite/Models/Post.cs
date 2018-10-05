@@ -24,7 +24,7 @@ namespace MySite.Models
         public string Category { get; set; }
         [Required(ErrorMessage = "Please enter a text")]
         [MinLength(50, ErrorMessage = "Min enter a 20 characters")]
-        [MaxLength(17000, ErrorMessage = "Max enter a 17000 c characters")]
+        [MaxLength(30000, ErrorMessage = "Max enter a 30000  characters")]
         public string Text { get; set; }
         
         public string Author { get; set; }

@@ -71,9 +71,9 @@ namespace MySite.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(maxLength: 180, nullable: false),
                     Category = table.Column<string>(nullable: false),
-                    Text = table.Column<string>(nullable: false),
+                    Text = table.Column<string>(maxLength: 30000, nullable: false),
                     Author = table.Column<string>(nullable: true),
                     ImageData = table.Column<byte[]>(nullable: true),
                     ImageMimeType = table.Column<string>(nullable: true),
@@ -94,7 +94,9 @@ namespace MySite.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Folowers = table.Column<int>(nullable: false),
-                    Viewers = table.Column<int>(nullable: false)
+                    Viewers = table.Column<int>(nullable: false),
+                    ImageData = table.Column<byte[]>(nullable: true),
+                    ImageMimeType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

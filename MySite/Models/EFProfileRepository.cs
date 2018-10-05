@@ -24,8 +24,10 @@ namespace MySite.Models
             }
             else
             {
+                //context.Profiles.AddRange(profile);
                 Profile dbEntry = context.Profiles
                     .FirstOrDefault(p => p.ProfileID == profile.ProfileID);
+
                 if (dbEntry != null)
                 {
                     dbEntry.UserID = profile.UserID;
@@ -33,6 +35,8 @@ namespace MySite.Models
                     dbEntry.LastName = profile.LastName;
                     dbEntry.Folowers = profile.Folowers;
                     dbEntry.Viewers = profile.Viewers;
+                    dbEntry.ImageData = profile.ImageData;
+                    dbEntry.ImageMimeType = profile.ImageMimeType;
                 }
             }
             context.SaveChanges();

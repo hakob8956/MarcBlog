@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 using System;
+using System.Linq;
 namespace MySite.Models
 {
     public static class SeedData
     {
+
         public static void EnsurePopulated(IApplicationBuilder app)
         {
-            
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
             using (var scope = scopeFactory.CreateScope())
             {
@@ -19,6 +20,7 @@ namespace MySite.Models
                         new Post
                         {
                             Title = "MySite1",
+
                             Description = "Description1",
                             Category = "Category1",
                             Text = "Hiiii Fack1",
@@ -51,7 +53,7 @@ namespace MySite.Models
                                Category = "Category2",
                                Text = "Hiiii Fack2",
                                Author = "MyBlog",
-                             DateTime = DateTime.Now
+                               DateTime = DateTime.Now
                            },
                           new Post
                           {
