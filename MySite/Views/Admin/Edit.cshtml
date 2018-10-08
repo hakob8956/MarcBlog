@@ -20,7 +20,7 @@
                 <div class="panel-body">
 
                     @using (Html.BeginForm("Edit", "Admin",
-         FormMethod.Post, new { enctype = "multipart/form-data" }))
+FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="panel-body">
                             @Html.HiddenFor(p => p.PostID)

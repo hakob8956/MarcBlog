@@ -58,6 +58,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\normalize.css\CHANGELOG.md" />
+    <None Include="wwwroot\normalize.css\LICENSE.md" />
+    <None Include="wwwroot\normalize.css\README.md" />
     <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.js" />
     <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.js.map" />
     <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.min.js" />

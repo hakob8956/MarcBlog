@@ -96,6 +96,18 @@ namespace MySite.Controllers
                 return BadRequest();
             }
         }
+        public FileContentResult GetAvatar(int profileID)
+        {
+            Profile profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
+            if (profile != null && profile.ImageData != null && profile.ImageMimeType != null)
+            {
+                return File(profile.ImageData, profile.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public FileContentResult GetImage(int postID)
         {
             Post product = _postRepository.Posts.FirstOrDefault(p => p.PostID == postID);

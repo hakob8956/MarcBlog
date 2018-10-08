@@ -20,10 +20,12 @@ namespace MySite.Controllers
         private IPost repository;
         public const int ImageMinimumBytes = 512;
         private readonly UserManager<User> _userManager;
+        private readonly IProfile _profile;
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public AdminController(IPost repository, UserManager<User> userManager)
+        public AdminController(IPost repository, UserManager<User> userManager,IProfile profile)
         {
+            _profile = profile;
             _userManager = userManager;
             this.repository = repository;
 
@@ -81,6 +83,19 @@ namespace MySite.Controllers
             return true;
         }
         [HttpPost]
+        public IActionResult DeleteAvatar(int profileID)
+        {
+
+            Profile profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
+            if (profile != null)
+            {
+                profile.ImageData = null;
+                profile.ImageMimeType = null;
+                _profile.SaveProfile(profile);
+            }
+            return View("Edit", "Profile");
+        }
+        [HttpPost]
         public IActionResult DeleteImage(int postID)
         {
             
@@ -118,7 +133,7 @@ namespace MySite.Controllers
                 post.DateTime = DateTime.Now;
                 repository.SaveProduct(post);
                 TempData["message"] = $"{post.Title} has been saved";
-                return RedirectToAction("Index");
+                return View("Edit",post.PostID);
             }
             else
             {
