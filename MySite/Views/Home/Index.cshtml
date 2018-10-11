@@ -1,29 +1,4 @@
 ﻿@model PostViewModel
-<style>
-    /* Styles for wrapping the search box */
-
-    .main {
-        width: 100%;
-    }
-
-    /* Bootstrap 4 text input with search icon */
-
-    .has-search .form-control {
-        padding-left: 2.375rem;
-    }
-
-    .has-search .form-control-feedback {
-        position: absolute;
-        z-index: 2;
-        display: block;
-        width: 2.375rem;
-        height: 2.375rem;
-        line-height: 2.375rem;
-        text-align: center;
-        pointer-events: none;
-        color: #aaa;
-    }
-</style>
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('@Url.Content("~/img/home-bg.jpg")')">
     <div class="overlay"></div>
@@ -40,17 +15,17 @@
 </header>
 <!-- Main Content -->
 <div class="container">
-    @{ 
+    @{
         BreadcrumbViewModel broad = new BreadcrumbViewModel()
         {
             Active = true,
             Category = Model.CurrentCategory
         };
     }
-    @Html.Partial("ShowBreadcrumb",broad)
+    @Html.Partial("ShowBreadcrumb", broad)
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
-        
+
         <div class="d-flex flex-row bd-highlight mb-3">
             <div class="p-2 bd-highlight" style="width:160px">
                 @*@await Component.InvokeAsync("NavigationMenu")*@
@@ -114,3 +89,30 @@
          class="btn-group pull-right">
     </div>
 </div>
+@section Style{
+    <style>
+        /* Styles for wrapping the search box */
+
+        .main {
+            width: 100%;
+        }
+
+        /* Bootstrap 4 text input with search icon */
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+    </style>
+}

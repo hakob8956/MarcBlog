@@ -1,0 +1,40 @@
+﻿@model ProfileViewModel
+<header class="masthead" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    @{string title = Model.email;
+                        if (Model.Profile.FirstName != null && Model.Profile.LastName != null)
+                        {
+                            title = $"{Model.Profile.FirstName} {Model.Profile.LastName}";
+                        }
+                        else if (Model.Profile.FirstName != null)
+                        {
+                            title = Model.Profile.FirstName;
+                        }
+                    }
+                    <h1 style="color:#F3F3F3;cursor:default">@title</h1>
+                    @if (Model.Profile.ImageData == null)
+                    {
+                        <img src="https://picsum.photos/300/250" alt="Avatar" class="image card-img-top">
+
+                    }
+                    else
+                    {
+                        <img class="img-thumbnail" height="300" width="250"
+                             src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" />
+                    }
+                    <span class="subheading"><span style="color:#98E8D6">FirstName:</span> @Model.Profile.FirstName</span>
+                    <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
+                    <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
+                    @*<span class="subheading">Viewers: @Model.Profile.Viewers</span>*@
+                    <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
+                    <span class="subheading"><span style="color:#98E8D6">Description:</span><br />.....</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -41,44 +41,13 @@
     }
 </style>
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    @{ string hi = Model.Profile.FirstName == null ? Model.email : Model.Profile.FirstName;}
-                    <h1 style="color:#F3F3F3">@hi</h1>
-                    <span class="subheading"><span style="color:#98E8D6">FirstName:</span> @Model.Profile.FirstName</span>
-                    <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
-                    <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
-                    <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+@Html.Partial("ShowProfilePageHeader", Model)
 <!-- Main Content -->
 <div class="container">
 
     <div class="row">
-        <div class="col">
-            <div class="card border-0" style="width: 18rem;">
-                <h5 class="card-title text-center card_title">Card title</h5>
-                <div class="card-body">
-                    @if (Model.Profile.ImageData == null)
-                    {
-                        <img src="https://picsum.photos/300/250" alt="Avatar" class="image card-img-top">
-
-                    }
-                    else
-                    {
-                        <img class="img-thumbnail" height="300" width="250"
-                             src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" />
-                    }
-                </div>
-
-            </div>
+        <div class="col-sm-">
+            @Html.Partial("ShowProfileNav")
         </div>
         <div class="col">
             <form asp-action="Edit" asp-controller="Profile" id="myForm" enctype="multipart/form-data">
@@ -166,32 +135,28 @@
 
 
 </div>
-<style>
-    .card_title {
-        color: #323B50;
-    }
-
-        .card_title:hover {
-            cursor: default;
-            color: #2B3449;
+@section Style{
+    <style>
+        .card_title {
+            color: #323B50;
         }
 
-    .subheading {
-        cursor: default;
-    }
+            .card_title:hover {
+                cursor: default;
+                color: #2B3449;
+            }
+
+        .subheading {
+            cursor: default;
+        }
 
 
-    .btn-link:hover, .btn-link:focus {
-        color: #934A4A !important;
-        text-decoration: none;
-    }
-
-   
-
-   
-
-   
-</style>
+        .btn-link:hover, .btn-link:focus {
+            color: #934A4A !important;
+            text-decoration: none;
+        }
+    </style>
+}
 <script>
     $('#button').on('click', function (e) {
         e.preventDefault();

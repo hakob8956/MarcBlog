@@ -1,61 +1,11 @@
 ﻿@model ProfileViewModel
-
-
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    @{ string hi = Model.Profile.FirstName == null ? Model.email : Model.Profile.FirstName;}
-                    <h1 style="color:#F3F3F3;cursor:default">@hi</h1>
-                    <span class="subheading"><span style="color:#98E8D6">FirstName:</span> @Model.Profile.FirstName</span>
-                    <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
-                    <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
-                    @*<span class="subheading">Viewers: @Model.Profile.Viewers</span>*@
-                    <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+@Html.Partial("ShowProfilePageHeader", Model)
 <!-- Main Content -->
 <div class="container">
-
     <div class="row">
-        <div class="col">
-            <div class="card border-0" style="width: 18rem;">
-                @{ 
-                    string title = Model.email;
-                    if (Model.Profile.FirstName != null && Model.Profile.LastName!=null)
-                    {
-                        title = $"{Model.Profile.FirstName} {Model.Profile.LastName}";
-                    }
-                    else if (Model.Profile.FirstName != null)
-                    {
-                        title = Model.Profile.FirstName;
-                    }
-                    
-                }
-                <h5 class="card-title text-center card_title">@title</h5>
-
-                @if (Model.Profile.ImageData == null)
-                {
-                    <img src="https://picsum.photos/300/250" alt="Avatar" class="image card-img-top">
-
-                }
-                else
-                {
-                    <img class="img-thumbnail" height="300" width="250"
-                         src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" />
-                }
-                <div class="card-body">
-                    <p class="card-text">Description....</p>
-                </div>
-            </div>
-            <br />
-            <a class="card-link" asp-controller="Profile" asp-action="Edit" style="color:#C7C7C7">Edit</a>
+        <div class="col-sm-">
+            @Html.Partial("ShowProfileNav")
         </div>
         <div class="col">
             <table class="table">
@@ -63,7 +13,6 @@
                     <tr>
                         <th class="text-center card_title" colspan="2">UserName</th>
                         <th></th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -82,19 +31,35 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>
-<style>
-    .card_title {
-        color: #323B50;
-    }
+@section Style{
+    <style>
 
-        .card_title:hover {
+        .subheading {
             cursor: default;
-            color: #2B3449;
         }
+    </style>
+}
+<script type="text/javascript">
+    var innerPag;
+    function GoPage(Element,Page){
 
-    .subheading {
-        cursor: default;
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SubAjax","Profile")',
+            data: JSON.stringify(testData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (e) {
+                alert("Sucess");
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
     }
-</style>
+
+
+</script>

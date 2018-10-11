@@ -42,7 +42,6 @@ namespace MySite.Controllers
                     Profile = MyProfile,
                     email = user.Email
 
-
                 };
                 return View(profileModel);
             }
@@ -60,7 +59,6 @@ namespace MySite.Controllers
                 {
                     Profile = MyProfile,
                     email = user.Email
-
 
                 };
                 return View(profileModel);
@@ -172,6 +170,32 @@ namespace MySite.Controllers
 
             return Json("Error");
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> Management()
+        //{
+        //    var user = await GetCurrentUserAsync();
+        //    if (user != null)
+        //    {
+
+        //        Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
+        //        ProfileViewModel profileModel = new ProfileViewModel()
+        //        {
+        //            Profile = MyProfile,
+        //            email = user.Email
+
+        //        };
+        //        //ov iran subscribe tvel
+        //        ManagementViewModel model = new ManagementViewModel()
+        //        {
+        //            ProfileViewModel = profileModel,
+        //            Length = _folower.Folowers.Count(f => f.FolowerID == user.Id)
+
+        //        }
+        //        return View(profileModel);
+        //    }
+        //    return NotFound();
+        //}
         public static bool IsImage(IFormFile postedFile)
         {
 
