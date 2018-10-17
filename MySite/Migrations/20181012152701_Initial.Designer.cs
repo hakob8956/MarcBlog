@@ -10,7 +10,7 @@ using MySite.Models;
 namespace MySite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181003204932_Initial")]
+    [Migration("20181012152701_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,6 +152,8 @@ namespace MySite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<byte>("Allow");
+
                     b.Property<string>("Author");
 
                     b.Property<string>("Category")
@@ -187,7 +189,8 @@ namespace MySite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Folowers");
 
@@ -195,7 +198,8 @@ namespace MySite.Migrations
 
                     b.Property<string>("ImageMimeType");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(15);
 
                     b.Property<string>("UserID");
 

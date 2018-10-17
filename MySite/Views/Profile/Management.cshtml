@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-">
-            @Html.Partial("ShowProfileNav")
+            @Html.Partial("ShowProfileNav",Model.Me)
         </div>
        <div class="col">
            <table class="table">
@@ -13,10 +13,7 @@
                    <td scope="col">#</td>
                    <td></td>
                </tr>
-               @foreach (var item in Model.)
-               {
-
-               }
+              
            </table>foreach
        </div>
 

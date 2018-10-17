@@ -1,13 +1,16 @@
-﻿<nav class="nav flex-column" style="margin-right:100px">
-    <a class="nav-link active" asp-action="Index" asp-controller="Profile">Information</a>
-    <a class="nav-link" asp-controller="Profile" asp-action="Management">Management</a>
-    <a class="nav-link" asp-controller="Profile" asp-action="Edit">Edit</a>
-</nav>
-<style>
-    @@media only screen and (max-width: 500px) {
-        .flex-column {
-            flex-direction: row !important;
-            margin: auto !important;
+﻿@if (Model)
+{
+    <nav class="nav flex-column" style="margin-right:100px">
+        <a class="nav-link active" asp-action="Index" asp-controller="Profile">Information</a>
+        <a class="nav-link" asp-controller="Profile" asp-action="Management">Management</a>
+        <a class="nav-link" asp-controller="Profile" asp-action="Edit">Edit</a>
+    </nav>
+    <style>
+        @@media only screen and (max-width: 500px) {
+            .flex-column {
+                flex-direction: row !important;
+                margin: auto !important;
+            }
         }
-    }
-</style>
+    </style>
+}

@@ -77,7 +77,8 @@ namespace MySite.Migrations
                     Author = table.Column<string>(nullable: true),
                     ImageData = table.Column<byte[]>(nullable: true),
                     ImageMimeType = table.Column<string>(nullable: true),
-                    DateTime = table.Column<DateTime>(nullable: false)
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    Allow = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,8 +92,8 @@ namespace MySite.Migrations
                     ProfileID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 10, nullable: true),
+                    LastName = table.Column<string>(maxLength: 15, nullable: true),
                     Folowers = table.Column<int>(nullable: false),
                     Viewers = table.Column<int>(nullable: false),
                     ImageData = table.Column<byte[]>(nullable: true),

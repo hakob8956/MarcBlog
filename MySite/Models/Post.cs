@@ -35,5 +35,8 @@ namespace MySite.Models
 
         public DateTime DateTime { get; set; }
 
+        public byte Allow { get; set; } = 0;
+        
+
     }
 }

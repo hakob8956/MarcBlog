@@ -1,5 +1,5 @@
 ﻿@model ProfileViewModel
-<header class="masthead" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
+<header class="masthead" id="header" style="background-image: url('@Url.Content("~/img/myProfile.jpeg")')">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -18,7 +18,7 @@
                     <h1 style="color:#F3F3F3;cursor:default">@title</h1>
                     @if (Model.Profile.ImageData == null)
                     {
-                        <img src="https://picsum.photos/300/250" alt="Avatar" class="image card-img-top">
+                        <img src="https://picsum.photos/150/150" alt="Avatar" class="image card-img-top">
 
                     }
                     else
@@ -34,6 +34,19 @@
                     <span class="subheading"><span style="color:#98E8D6">Description:</span><br />.....</span>
 
                 </div>
+                <span class="fa-pull-right">
+                    <form asp-action="SubAjax" asp-controller="Profile" id="myForm">
+                        <input type="hidden" name="profileID" id="profileID" value="@Model.Profile.ProfileID" />
+                        <input type="hidden" name="returnUrl" id="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                        <button class="btn  btn-primary btn-sm" style="width:125px;height:20px" id="subscribe" type="submit">
+                            @*@if (Model.isSubscribe)
+                            {<p style="margin-top:-10px;margin-left:-16px;color:#C0C0C0" id="mySubText">Subscribed:@Model.Profile.Folowers</p>}
+                            @if (!Model.isSubscribe)
+                            {<*@<p style="margin-top:-10px;margin-left:-16px" id="mySubText">Subscribe:@Model.Profile.Folowers</p>
+                        </button>
+                    </form>
+
+                </span>
             </div>
         </div>
     </div>

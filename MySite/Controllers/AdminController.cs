@@ -1,36 +1,40 @@
-﻿using MySite.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using Microsoft.AspNetCore.Authorization;
-using System.Web;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Text.RegularExpressions;
-using System;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MySite.Models;
+using System;
+using System.IO;
+using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MySite.Controllers
 {
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        
+
         private IPost repository;
         public const int ImageMinimumBytes = 512;
         private readonly UserManager<User> _userManager;
         private readonly IProfile _profile;
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public AdminController(IPost repository, UserManager<User> userManager,IProfile profile)
+        public AdminController(IPost repository, UserManager<User> userManager, IProfile profile)
         {
             _profile = profile;
             _userManager = userManager;
             this.repository = repository;
 
         }
-        public ViewResult Index() => View(repository.Posts);
+        public ViewResult Index()
+        {
+            var Post = repository.Posts.Where(p => p.Allow == 1);
+            return View(Post);
+        }
         public ViewResult Edit(int postID) =>
             View(repository.Posts.FirstOrDefault(p => p.PostID == postID));
 
@@ -79,7 +83,7 @@ namespace MySite.Controllers
             {
                 return false;
             }
-    
+
             return true;
         }
         [HttpPost]
@@ -98,7 +102,7 @@ namespace MySite.Controllers
         [HttpPost]
         public IActionResult DeleteImage(int postID)
         {
-            
+
             Post post = repository.Posts.FirstOrDefault(p => p.PostID == postID);
             if (post != null)
             {
@@ -109,8 +113,9 @@ namespace MySite.Controllers
             return View("Edit", postID);
         }
         [HttpPost]
-        public  async Task<IActionResult> Edit(Post post, IFormFile image = null)
-        {         
+        [AllowAnonymous]
+        public async Task<IActionResult> Edit(Post post, IFormFile image = null)
+        {
             if (ModelState.IsValid)
             {
                 if (image != null)
@@ -129,20 +134,59 @@ namespace MySite.Controllers
 
                 }
                 var user = await GetCurrentUserAsync();
+                var profile = _profile.Profiles.FirstOrDefault(p => p.UserID == user.Id);
                 post.UserID = user.Id;
                 post.DateTime = DateTime.Now;
+                if (User.IsInRole("admin"))
+                    post.Allow = 1;
+                else
+                    post.Allow = 0;
+                post.Author = profile.FirstName == null ? user.Email.Split("@")[0] : profile.FirstName;
                 repository.SaveProduct(post);
                 TempData["message"] = $"{post.Title} has been saved";
-                return View("Edit",post.PostID);
+                if (User.IsInRole("admin"))
+                    return RedirectToAction("Index");
+                else
+                    return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View(post);
+                if (User.IsInRole("admin"))
+                    return View(post);
+                else
+                    return RedirectToAction("AddPost", "Home",post);
             }
         }
 
+
         public IActionResult Menu() => View();
+        public IActionResult NewPosts() => View(repository.Posts.Where(p => p.Allow == 0));
         public ViewResult Create() => View("Edit", new Post());
+
+        [HttpPost]
+        public IActionResult CancelPost(int postID)
+        {
+            Post post = repository.Posts.FirstOrDefault(p => p.PostID == postID);
+            if (post != null)
+            {
+                post.Allow = 3;
+                repository.SaveProduct(post);
+            }
+            return View("NewPosts");
+        }
+        [HttpPost]
+        public IActionResult AcceptPost(int postID)
+        {
+            Post post = repository.Posts.FirstOrDefault(p => p.PostID == postID);
+            if (post != null)
+            {
+                post.Allow = 1;
+                repository.SaveProduct(post);
+            }
+            return View("NewPosts");
+        }
+
+
 
         [HttpPost]
         public IActionResult Delete(int postID)

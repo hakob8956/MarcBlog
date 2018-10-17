@@ -3,34 +3,78 @@
 @Html.Partial("ShowProfilePageHeader", Model)
 <!-- Main Content -->
 <div class="container">
-    <div class="row">
-        <div class="col-sm-">
-            @Html.Partial("ShowProfileNav")
-        </div>
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="text-center card_title" colspan="2">UserName</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>FirstName</td>
-                        <td>@Model.Profile.FirstName</td>
-                    </tr>
-                    <tr>
-                        <td>LastName</td>
-                        <td>@Model.Profile.LastName</td>
-                    </tr>
-                    <tr>
-                        <td>Folowers</td>
-                        <td>@Model.Profile.Folowers</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="col-lg-11 col-md-10 mx-auto">
+        @if (Model.MyPosts != null)
+        {
+            @using (Html.BeginForm("Index", "Profile", FormMethod.Get))
+            {
+
+                <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 bd-highlight" style="width:160px">
+                        @*@await Component.InvokeAsync("NavigationMenu")*@
+
+                        <select class="custom-select" id="inputGroupSelect04"
+                                aria-label="Example select with button addon"
+                                style="font-size:15px" name="category">
+                            <option value="All" selected>All</option>
+
+                            @foreach (string category in Model.MyPosts.Categories)
+                            {
+                                if (category.Equals(Model.MyPosts.CurrentCategory))
+                                {
+                                    <option value="@category" selected>@category</option>
+                                }
+                                else
+                                {
+                                    <option value="@category">@category</option>
+                                }
+
+                            }
+                        </select>
+                    </div>
+                    <div class="main p-2 bd-highlight">
+
+                        <!-- Actual search box -->
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input type="text" class="form-control" placeholder="Search" name="title">
+                        </div>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <input type="hidden" value="@Model.Profile.ProfileID" name="profileID" />
+                        <button type="submit" class="btn btn-primary" style="padding:8px;border-radius:8px">
+                            <p style="font-size:12px;display:inline">Search</p>
+                        </button>
+
+                    </div>
+
+
+                </div>
+            }
+            <hr />
+
+            <div class="row">
+                <div class="col-lg-11 col-md-10 mx-auto">
+                    @foreach (var p in Model.MyPosts.Posts)
+                    {
+                        @Html.Partial("ShowBlocksPartial", p)
+                    }
+
+                </div>
+
+            </div>
+
+            <div page-model="@Model.MyPosts.PagingInfo" page-action="Index" page-classes-enabled="true"
+                 page-class="btn" page-class-normal="btn-default"
+                 page-class-selected="btn-primary" page-url-category="@Model.MyPosts.CurrentCategory"
+                 class="btn-group pull-right">
+            </div>
+
+        }
+        else
+        {
+            <p>No Posts</p>
+        }
 
     </div>
 </div>
@@ -40,11 +84,44 @@
         .subheading {
             cursor: default;
         }
+        /* Styles for wrapping the search box */
+
+        .main {
+            width: 100%;
+        }
+
+        /* Bootstrap 4 text input with search icon */
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
     </style>
 }
 <script type="text/javascript">
-    var innerPag;
-    function GoPage(Element,Page){
+    var countFolower = Number(@Model.Profile.Folowers);
+    $("#myForm").submit(function (event) {
+        console.log("Working");
+        console.log($("#profileID").val() + " Id");
+        console.log($("#returnUrl").val() + " Id");
+
+        event.preventDefault();
+        var testData =
+        {
+            'profileID': $("#profileID").val(),
+            'TestStr2': $("#returnUrl").val()
+        };
 
         $.ajax({
             type: "POST",
@@ -52,14 +129,28 @@
             data: JSON.stringify(testData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function (e) {
-                alert("Sucess");
-            },
-            error: function () {
-                alert("Error");
-            }
+            success: successFunc,
+            error: errorFunc
         });
+    });
+    function successFunc(data, status) {
+        var sub = document.getElementById("mySubText");
+        if (data === "Add") {
+
+            sub.innerHTML = "Subscribed:" + (countFolower += 1);
+            sub.style.color = "#C0C0C0";
+
+
+        } else if (data === "Delete") {
+
+            sub.innerHTML = "Subscribe :" + (countFolower -= 1);
+            sub.style.color = "#FFFFFF";
+        } else if (data === "NewUser") {
+            alert("Please Register or Login");
+        }
     }
 
-
+    function errorFunc(errorData) {
+        alert('Ошибка' + errorData.responseText);
+    }
 </script>

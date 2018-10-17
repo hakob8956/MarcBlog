@@ -20,6 +20,7 @@ namespace MySite.Controllers
         private readonly IPost _post;
         private readonly IFolower _folower;
         public const int ImageMinimumBytes = 512;
+        public int PageSize = 4;
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         public ProfileController(UserManager<User> userManager, IProfile profile, IPost post, IFolower folower)
@@ -29,21 +30,84 @@ namespace MySite.Controllers
             _post = post;
             _folower = folower;
         }
+        private PostViewModel SetPost(IEnumerable<Post> posts, string category, int page = 1, string title = null)
+        {
+            PostViewModel model = new PostViewModel()
+            {
+                Posts = posts
+                    .Where(p => category == null || category.Equals("All") || p.Category == category)
+                    .Where(p => title == null ||
+                     p.Title.ToLower().Replace(" ", string.Empty)
+                    .Contains(title.ToLower()
+                    .Replace(" ", string.Empty)))
+                    .OrderBy(p => p.PostID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = category == null || category == "All" ? //TODO FIX CATEGORY TEST title
+                        posts.Count() :
+                        posts.Where(e =>
+                            e.Category == category).Count()
+                },
+                CurrentCategory = category,
+                Categories = posts.Select(x => x.Category).
+                       Distinct().OrderBy(x => x)
+            };
+            if (model.Posts.Count(p => p.PostID == p.PostID) == 0)
+            {
+                model = null;
+            }
+            return model;
+        }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? profileID, string category, int page = 1, string title = null)
         {
             var user = await GetCurrentUserAsync();
             if (user != null)
             {
                 Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
-
-                ProfileViewModel profileModel = new ProfileViewModel()
+                if (MyProfile.ProfileID == profileID || profileID == null)
                 {
-                    Profile = MyProfile,
-                    email = user.Email
+                    var posts = _post.Posts.Where(p => p.UserID == user.Id);
+                    PostViewModel postModel = SetPost(posts, category, page, title);
 
-                };
-                return View(profileModel);
+                    ProfileViewModel profileModel = new ProfileViewModel()
+                    {
+                        Profile = MyProfile,
+                        email = user.Email,
+                        MyPosts = postModel,
+                        Me = true
+
+                    };
+                    return View(profileModel);
+                }
+
+            }
+            if (profileID != null)
+            {
+                var userProfile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
+                if (userProfile != null)
+                {
+                    user = _userManager.Users.FirstOrDefault(i => i.Id == userProfile.UserID);
+                    if (user != null)
+                    {
+                        var posts = _post.Posts.Where(p => p.UserID == user.Id);
+                        PostViewModel postModel = SetPost(posts, category, page, title);
+                        ProfileViewModel profileViewModel = new ProfileViewModel
+                        {
+                            Profile = userProfile,
+                            email = user.Email,
+                            MyPosts = postModel,
+                            Me = false
+                        };
+                        return View(profileViewModel);
+
+                    }
+
+                }
             }
             return NotFound();
         }
@@ -83,7 +147,7 @@ namespace MySite.Controllers
                         profile.ImageMimeType = Image.ContentType;
                         profile.ImageData = new byte[Image.Length];
                         Image.OpenReadStream().Read(profile.ImageData, 0, (int)Image.Length);
-                       
+
 
                     }
                     else
@@ -95,7 +159,7 @@ namespace MySite.Controllers
                 profile.FirstName = model.FirstName;
                 profile.LastName = model.LastName;
                 model.ProfileID = profile.ProfileID;
-                
+
 
                 _profile.SaveProfile(profile);
 
@@ -125,18 +189,29 @@ namespace MySite.Controllers
         public async Task<JsonResult> SubAjax([FromBody]AjaxPostViewModel model)
         {
             var CurrentUser = await GetCurrentUserAsync();
-            var FolowerAccount = _post.Posts.FirstOrDefault(p => p.PostID == model.postID);
-            var FolowerProfile = _profile.Profiles.FirstOrDefault(p => FolowerAccount.UserID == p.UserID);
-            if (CurrentUser != null && FolowerAccount != null)
+            Post FolowerAccount = null;
+            Profile FolowerProfile = null;
+            if (model.postID == 0)
+            {
+                FolowerProfile = _profile.Profiles.FirstOrDefault(p => model.profileID == p.ProfileID);
+            }
+            else
+            {
+                FolowerAccount = _post.Posts.FirstOrDefault(p => p.PostID == model.postID);
+                if (FolowerAccount != null)
+                    FolowerProfile = _profile.Profiles.FirstOrDefault(p => FolowerAccount.UserID == p.UserID);
+            }
+
+            if (CurrentUser != null && FolowerProfile != null)
             {
                 if (!Url.IsLocalUrl(model.returnUrl))
                 {
                     model.returnUrl = "/";
                 }
-                var folower = _folower.Folowers.Where(i => i.FolowerID.Equals(FolowerAccount.UserID));
+                var folower = _folower.Folowers.Where(i => i.FolowerID.Equals(FolowerProfile.UserID));
                 if (folower != null)
                 {
-                    if (CurrentUser.Id.Equals(FolowerAccount.UserID))
+                    if (CurrentUser.Id.Equals(FolowerProfile.UserID))
                     {
                         return Json("Exist");
                     }
@@ -153,7 +228,7 @@ namespace MySite.Controllers
                     }
                     Folower modelFolower = new Folower()
                     {
-                        FolowerID = FolowerAccount.UserID,
+                        FolowerID = FolowerProfile.UserID,
                         UserID = CurrentUser.Id
 
                     };

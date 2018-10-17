@@ -67,8 +67,15 @@
 
         </div>
     }
-    <hr />
 
+
+
+    <div class="float-right" style="margin-bottom:1px">
+        <a asp-action="AddPost" asp-controller="Home" title="Add Post" style="color:#0085A1" id="AddPost">
+            <i class="fas fa-plus-circle"></i>
+        </a>
+    </div>
+    <hr />
     <div class="row">
         <div class="col-lg-11 col-md-10 mx-auto">
             @foreach (var p in Model.Posts)
@@ -113,6 +120,9 @@
             text-align: center;
             pointer-events: none;
             color: #aaa;
+        }
+        #AddPost:hover {
+            color: #00657b !important;
         }
     </style>
 }

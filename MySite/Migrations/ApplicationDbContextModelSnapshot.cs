@@ -150,6 +150,8 @@ namespace MySite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<byte>("Allow");
+
                     b.Property<string>("Author");
 
                     b.Property<string>("Category")
@@ -185,7 +187,8 @@ namespace MySite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Folowers");
 
@@ -193,7 +196,8 @@ namespace MySite.Migrations
 
                     b.Property<string>("ImageMimeType");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(15);
 
                     b.Property<string>("UserID");
 

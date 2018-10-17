@@ -37,7 +37,7 @@ namespace MySite.Models
                     dbEntry.DateTime = post.DateTime;
                     dbEntry.ImageData = post.ImageData;
                     dbEntry.ImageMimeType = post.ImageMimeType;
-                
+                    dbEntry.Allow = post.Allow;
                 }
             }
             context.SaveChanges();

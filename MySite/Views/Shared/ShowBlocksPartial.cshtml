@@ -1,21 +1,4 @@
 ﻿@model Post
-@*<div class="post-preview">
-        <img class="post-preview" src="~/img/about-bg.jpg" style="height:100px;width:100px" />
-
-        <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
-            <h2 class="post-title">
-                @Model.Title
-            </h2>
-            <h3 class="post-subtitle">
-               @Html.Raw(Model.Description)
-            </h3>
-        </a>
-        <p class="post-meta">
-            Posted by
-            <a href="#">@Model.Author</a>
-            on @Model.DateTime.Month
-        </p>
-    </div>*@
 <div class="card mb-5 border-0" style="back">
     <a asp-controller="Home" asp-action="Post" asp-route-postID="@Model.PostID" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()" class="card-link">
         @if (Model.ImageData != null && Model.ImageMimeType != null)
@@ -37,7 +20,6 @@
         <p class="card-text">@Html.Raw(Model.Description)</p>
 
         <p class="post-meta float-right">
-
             <small class="text-muted">
                 Posted by
                 <a href="#">@Model.Author</a>
@@ -72,15 +54,19 @@
             }
 
         }
+
         <p class="card-text"><small class="text-muted">Last updated @last @lastText ago</small></p>
+
     </div>
 </div>
 <hr>
 
 <style>
-    .hoverImage:hover {
-        -moz-box-shadow: 0 0 12px #c2a3a3;
-        -webkit-box-shadow: 0 0 12px #c2a3a3;
-        box-shadow: 0 0 12px #c2a3a3;
-    }
+
+   .hoverImage:hover {
+       -moz-box-shadow: 0 0 12px #c2a3a3;
+       -webkit-box-shadow: 0 0 12px #c2a3a3;
+       box-shadow: 0 0 12px #c2a3a3;
+   }
+
 </style>

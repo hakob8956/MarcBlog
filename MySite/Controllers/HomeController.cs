@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MySite.Models;
 using MySite.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MySite.Controllers
@@ -16,6 +21,7 @@ namespace MySite.Controllers
         private IFolower _folower;
         private IProfile _profile;
         public int PageSize = 4;
+
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
@@ -30,7 +36,8 @@ namespace MySite.Controllers
         public IActionResult Index(string category, int page = 1, string title = null) => View(new PostViewModel
         {
             Posts = _postRepository.Posts
-                    .Where(p => category == null || category.Equals("All") || p.Category == category)
+                    .Where(p => p.Allow == 1)
+                    .Where(p => category == null || category.Equals("All") || p.Category.Equals(category))
                     .Where(p => title == null ||
                      p.Title.ToLower().Replace(" ", string.Empty)
                     .Contains(title.ToLower()
@@ -43,13 +50,15 @@ namespace MySite.Controllers
                 CurrentPage = page,
                 ItemsPerPage = PageSize,
                 TotalItems = category == null || category == "All" ? //TODO FIX CATEGORY TEST title
-                        _postRepository.Posts.Count() :
-                        _postRepository.Posts.Where(e =>
-                            e.Category == category).Count()
+
+                        _postRepository.Posts.Where(p => p.Allow == 1).Count() :
+                        _postRepository.Posts.Where(p => p.Allow == 1)
+                        .Where(e => e.Category == category).Count()
             },
             CurrentCategory = category,
-            Categories = _postRepository.Posts.Select(x => x.Category).
-                       Distinct().OrderBy(x => x)
+            Categories = _postRepository.Posts.Where(p => p.Allow == 1)
+                        .Select(x => x.Category)
+                        .Distinct().OrderBy(x => x)
 
         });
 
@@ -64,11 +73,11 @@ namespace MySite.Controllers
             bool _isSubscribe = false;
             if (currentUser != null)
             {
-                if (FolowerProfile!=null && userId.Equals(FolowerProfile.UserID))
+                if (FolowerProfile != null && userId.Equals(FolowerProfile.UserID))
                 {
                     _isSubscribe = true;
                 }
-                else if(ProfileFolowers != null)
+                else if (ProfileFolowers != null)
                 {
                     foreach (var item in ProfileFolowers)
                     {
@@ -120,9 +129,16 @@ namespace MySite.Controllers
                 return null;
             }
         }
+        [Authorize]
+        public IActionResult AddPost()
+        {
+            return View(new Post());
+        }
+    
         public IActionResult About() => View();
         public IActionResult Contact() => View();
         public IActionResult Test() => View();
+      
 
     }
 }
