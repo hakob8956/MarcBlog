@@ -14,10 +14,13 @@ namespace MySite.Models
         [MaxLength(15, ErrorMessage = "Max length 15")]
         [MinLength(5, ErrorMessage = "Min length 5")]
         public string LastName { get; set; }
+        [MaxLength(120, ErrorMessage = "Max length 120")]
+        public string Description { get; set; }
         public int Folowers { get; set; }
         public int Viewers { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
+        
 
     }
 }

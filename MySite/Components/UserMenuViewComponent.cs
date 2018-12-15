@@ -11,7 +11,6 @@ namespace MySite.Components
     {
         private readonly UserManager<User> _userManager;
         private readonly IProfile _profile;
-        static object locker = new object();
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
         private string UserID { get; set; } = "0";
         public UserMenuViewComponent(UserManager<User> userManager, IProfile profile)

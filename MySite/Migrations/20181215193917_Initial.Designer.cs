@@ -10,14 +10,14 @@ using MySite.Models;
 namespace MySite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181012152701_Initial")]
+    [Migration("20181215193917_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -169,6 +169,8 @@ namespace MySite.Migrations
 
                     b.Property<string>("ImageMimeType");
 
+                    b.Property<int>("ProfileID");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasMaxLength(30000);
@@ -188,6 +190,9 @@ namespace MySite.Migrations
                     b.Property<int>("ProfileID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(120);
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(10);

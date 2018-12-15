@@ -32,35 +32,81 @@ namespace MySite.Controllers
             _userManager = userManager;
             _profile = profile;
         }
-
-        public IActionResult Index(string category, int page = 1, string title = null) => View(new PostViewModel
+        public IEnumerable<Post> SortPosts(IEnumerable<Post> posts, string selectedSort)
         {
-            Posts = _postRepository.Posts
-                    .Where(p => p.Allow == 1)
-                    .Where(p => category == null || category.Equals("All") || p.Category.Equals(category))
-                    .Where(p => title == null ||
-                     p.Title.ToLower().Replace(" ", string.Empty)
-                    .Contains(title.ToLower()
-                    .Replace(" ", string.Empty)))
-                    .OrderBy(p => p.PostID)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize),
-            PagingInfo = new PagingInfo
+            switch (selectedSort)
             {
-                CurrentPage = page,
-                ItemsPerPage = PageSize,
-                TotalItems = category == null || category == "All" ? //TODO FIX CATEGORY TEST title
+                case "New":
+                    posts = _postRepository.Posts.OrderByDescending(l => l.DateTime);
+                    break;
+                case "Old":
+                    posts = _postRepository.Posts.OrderBy(l => l.DateTime);
+                    break;
+                default:
+                    posts = _postRepository.Posts.OrderByDescending(l => l.PostID);
+                    break;
+            }
+            return posts;
+        }
+        public IActionResult Index(string category, string sortSelected, int page = 1, string title = null, int requestAjax = 0)
+        {
 
-                        _postRepository.Posts.Where(p => p.Allow == 1).Count() :
-                        _postRepository.Posts.Where(p => p.Allow == 1)
-                        .Where(e => e.Category == category).Count()
-            },
-            CurrentCategory = category,
-            Categories = _postRepository.Posts.Where(p => p.Allow == 1)
+            var posts = SortPosts(_postRepository.Posts, sortSelected);//Default give order?postID
+
+            int totalItems = 1;
+            if (title != null)
+            {
+                totalItems = _postRepository.Posts
+                        .Where(p => p.Allow == 1)
+                        .Where(p => category == null || category.Equals("All") || p.Category.Equals(category))
+                        .Where(p => title == null ||
+                        p.Title.ToLower().Replace(" ", string.Empty)
+                        .Contains(title.ToLower().Replace(" ", string.Empty)))
+                        .OrderBy(p => p.PostID).Count();
+            }///check page 
+            else if (category == null || category.Equals("All"))
+            {
+                totalItems = _postRepository.Posts.Where(p => p.Allow == 1).Count();
+            }
+            else
+            {
+                totalItems = _postRepository.Posts.Where(p => p.Allow == 1)
+                         .Where(e => e.Category == category).Count();
+            }
+            var model = new PostViewModel
+            {
+                Posts = posts
+                        .Where(p => p.Allow == 1)
+                        .Where(p => category == null || category.Equals("All") || p.Category.Equals(category))
+                        .Where(p => title == null ||
+                        p.Title.ToLower().Replace(" ", string.Empty)
+                        .Contains(title.ToLower()
+                        .Replace(" ", string.Empty)))
+                        .Skip((page - 1) * PageSize)
+                        .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = totalItems
+                },
+
+                Categories = _postRepository.Posts.Where(p => p.Allow == 1)
                         .Select(x => x.Category)
-                        .Distinct().OrderBy(x => x)
+                        .Distinct().OrderBy(x => x),
+                CurrentCategory = category,
+                CurrentSearchTitle = title
 
-        });
+            };
+            if (requestAjax == 1)
+            {
+                return PartialView("ShowBlocksPartial", model);
+            }
+            return View(model);
+
+        }
+
+
 
         public async Task<IActionResult> Post(int postID, string returnUrl)
         {
@@ -134,11 +180,11 @@ namespace MySite.Controllers
         {
             return View(new Post());
         }
-    
+
         public IActionResult About() => View();
         public IActionResult Contact() => View();
         public IActionResult Test() => View();
-      
+
 
     }
 }

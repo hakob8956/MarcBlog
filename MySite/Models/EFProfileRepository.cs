@@ -33,6 +33,7 @@ namespace MySite.Models
                     dbEntry.UserID = profile.UserID;
                     dbEntry.FirstName = profile.FirstName;
                     dbEntry.LastName = profile.LastName;
+                    dbEntry.Description = profile.Description;
                     dbEntry.Folowers = profile.Folowers;
                     dbEntry.Viewers = profile.Viewers;
                     dbEntry.ImageData = profile.ImageData;

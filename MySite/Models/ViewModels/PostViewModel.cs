@@ -9,7 +9,8 @@ namespace MySite.Models.ViewModels
     {
         public IEnumerable<Post> Posts { get; set; }
         public PagingInfo PagingInfo { get; set; }
-        public string CurrentCategory { get; set; }
+        public string CurrentCategory { get; set; } = "";
+        public string CurrentSearchTitle { get; set; } = null;
         public IEnumerable<string> Categories { get; set; }
     }
 }

@@ -70,6 +70,7 @@ namespace MySite.Migrations
                     PostID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserID = table.Column<string>(nullable: true),
+                    ProfileID = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(maxLength: 180, nullable: false),
                     Category = table.Column<string>(nullable: false),
@@ -94,6 +95,7 @@ namespace MySite.Migrations
                     UserID = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 10, nullable: true),
                     LastName = table.Column<string>(maxLength: 15, nullable: true),
+                    Description = table.Column<string>(maxLength: 120, nullable: true),
                     Folowers = table.Column<int>(nullable: false),
                     Viewers = table.Column<int>(nullable: false),
                     ImageData = table.Column<byte[]>(nullable: true),

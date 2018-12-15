@@ -47,7 +47,7 @@ namespace MySite.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = category == null || category == "All" ? //TODO FIX CATEGORY TEST title
+                    TotalItems = category == null || category == "All" ?
                         posts.Count() :
                         posts.Where(e =>
                             e.Category == category).Count()
@@ -63,80 +63,52 @@ namespace MySite.Controllers
             return model;
         }
 
-        public async Task<IActionResult> Index(int? profileID, string category, int page = 1, string title = null)
+        public async Task<IActionResult> Index(int profileID, string category, int page = 1, string title = null, int ajaxRequest = 0, int allowEdit = 0)
         {
             var user = await GetCurrentUserAsync();
-            if (user != null)
-            {
-                Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
-                if (MyProfile.ProfileID == profileID || profileID == null)
-                {
-                    var posts = _post.Posts.Where(p => p.UserID == user.Id);
-                    PostViewModel postModel = SetPost(posts, category, page, title);
 
-                    ProfileViewModel profileModel = new ProfileViewModel()
-                    {
-                        Profile = MyProfile,
-                        email = user.Email,
-                        MyPosts = postModel,
-                        Me = true
-
-                    };
-                    return View(profileModel);
-                }
-
-            }
-            if (profileID != null)
-            {
-                var userProfile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
-                if (userProfile != null)
-                {
-                    user = _userManager.Users.FirstOrDefault(i => i.Id == userProfile.UserID);
-                    if (user != null)
-                    {
-                        var posts = _post.Posts.Where(p => p.UserID == user.Id);
-                        PostViewModel postModel = SetPost(posts, category, page, title);
-                        ProfileViewModel profileViewModel = new ProfileViewModel
-                        {
-                            Profile = userProfile,
-                            email = user.Email,
-                            MyPosts = postModel,
-                            Me = false
-                        };
-                        return View(profileViewModel);
-
-                    }
-
-                }
-            }
-            return NotFound();
-        }
-        [HttpGet]
-        public async Task<IActionResult> Edit()
-        {
-            var user = await GetCurrentUserAsync();
-            if (user != null)
+            Profile profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
+            if (profile != null)
             {
 
-                Profile MyProfile = _profile.Profiles.FirstOrDefault(p => p.UserID.Equals(user.Id));
-                ProfileViewModel profileModel = new ProfileViewModel()
+                var posts = _post.Posts.Where(p => p.ProfileID == profile.ProfileID);
+                PostViewModel postModel = SetPost(posts, category, page, title);
+                var userPostProfile = _userManager.Users.FirstOrDefault(p => p.Id == profile.UserID);//Who create post
+                bool Me = true ? user != null && user.Id == userPostProfile.Id : false;
+                ProfileViewModel profileModel = new ProfileViewModel
                 {
-                    Profile = MyProfile,
-                    email = user.Email
+                    Profile = profile,
+                    email = userPostProfile.Email,
+                    MyPosts = postModel,
+                    Me = Me,//if user exist and userId == profileID
+                    AllowEdit = Me ? allowEdit : 0
 
                 };
+                if (ajaxRequest == 1)//FOR AJAX REQUEST
+                {
+                    return PartialView("ShowProfilePageHeader", profileModel);
+                }
                 return View(profileModel);
+
             }
             return NotFound();
         }
 
+        //[HttpGet]
+        //public IActionResult Edit()
+        //{
 
+        //    return RedirectToAction("Index", new { ajaxRequest = 0, allowEdit = 1,profileID= });
+        //}
         [HttpPost]
         public async Task<IActionResult> Edit(Profile model, IFormFile Image = null)
         {
+
             var CurrentUser = await GetCurrentUserAsync();
+
             if (CurrentUser != null && ModelState.IsValid)
             {
+
                 var profile = _profile.Profiles.FirstOrDefault(p => p.UserID == CurrentUser.Id);
 
                 if (Image != null)
@@ -158,7 +130,9 @@ namespace MySite.Controllers
                 }
                 profile.FirstName = model.FirstName;
                 profile.LastName = model.LastName;
+                profile.Description = model.Description;
                 model.ProfileID = profile.ProfileID;
+
 
 
                 _profile.SaveProfile(profile);
@@ -168,7 +142,7 @@ namespace MySite.Controllers
                     Profile = model,
                     email = CurrentUser.Email
                 };
-                return View(profileModel);
+                return RedirectToAction("Index", new { profileID = profile.ProfileID });
             }
             else if (CurrentUser == null)
             {
@@ -181,8 +155,7 @@ namespace MySite.Controllers
                     Profile = model,
                     email = CurrentUser.Email
                 };
-                return View(profileModel
-);
+                return RedirectToAction("Index", new { profileID = profileModel.Profile.ProfileID });
             }
         }
         [HttpPost]

@@ -19,12 +19,14 @@ namespace MySite.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IProfile _profile;
 
-        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager,RoleManager<IdentityRole> roleManager)
+        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager,RoleManager<IdentityRole> roleManager,IProfile profile)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _profile = profile;
         }
 
         public IActionResult Index()
@@ -45,6 +47,10 @@ namespace MySite.Controllers
                     var resultRole = await _userManager.AddToRoleAsync(user, "user");
                     if (resultRole.Succeeded)
                     {
+                        Profile profile = new Profile
+                        {
+                            UserID = user.Id
+                        };
                         return RedirectToAction("Index");
                     }                   
                 }

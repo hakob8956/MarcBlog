@@ -26,7 +26,8 @@
                     <div class="dropdown-menu dropdown-menu-right" style="background-color:#F1F3F4">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <form asp-action="Index" asp-controller="Profile">
+                            
+                            <form asp-action="Index" asp-controller="Profile" asp-route-ProfileID="@Model.ProfileID">
                                 <button type="submit" class="btn btn-link" style="font-size:12px">
                                     @{string text = Model.FirstName == null ? "MyProfile" : $"[{Model.FirstName}] Profile";}
                                     @text

@@ -13,8 +13,8 @@
     <script asp-src-include="~/vendor/jquery/jquery.min.js"></script>
     <!-- Normalize-->
     <link rel="stylesheet" asp-href-include="~/normalize.css/normalize.css" />
-
     <style>
+
         #logo {
             color: #e1c9c9 !important;
         }
@@ -28,7 +28,6 @@
             width: 32px !important;
         }
     </style>
-
 </head>
 <body>
     <div class="header">
@@ -39,7 +38,6 @@
                     Admin Panel
                 </a>
                 <div class="form-inline my-2 my-lg-0">
-
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#ffffff">
                         My Account
                     </a>
@@ -47,12 +45,9 @@
                         <a class="dropdown-item" href="#">My Profile</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Admin">Admin Panel</a>
                         <a class="dropdown-item" asp-action="Index" asp-controller="Home" style="color:#D92420">Exit</a>
-
                     </div>
                 </div>
-
             </nav>
-
         </div>
     </div>
     <div class="page-content">
@@ -61,12 +56,11 @@
                 <div class="sidebar content-box" style="display: block;">
                     <ul class="nav">
                         <!-- Main menu -->
-                        <li><a asp-action="NewPosts" asp-controller="Admin"><i class="fab fa-github-alt"></i> New Posts</a></li>
-                        
-                        <li><a asp-action="Index" asp-controller="Admin"><i class="fas fa-database"></i> Posts</a></li>
-                        <li><a asp-action="Index" asp-controller="Users"><i class="fas fa-users"></i> Users</a></li>
-                        <li><a asp-action="Index" asp-controller="Roles"><i class="fas fa-pencil-ruler"></i>Roles </a></li>
+                        <li><a asp-action="NewPosts" asp-controller="Admin" id="newposts"><i class="fab fa-github-alt"></i> New Posts <span id="newPostsText" style="color:#7A7A7A">[<showNotificationCount></showNotificationCount>]</span></a></li>
 
+                        <li><a asp-action="Index" asp-controller="Admin" id="posts"><i class="fas fa-database"></i> Posts</a></li>
+                        <li><a asp-action="Index" asp-controller="Users" id="users"><i class="fas fa-users"></i> Users</a></li>
+                        <li><a asp-action="Index" asp-controller="Roles" id="roles"><i class="fas fa-pencil-ruler"></i>Roles </a></li>
                     </ul>
                 </div>
             </div>
@@ -74,9 +68,37 @@
         </div>
     </div>
 
-
     <script asp-src-include="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script asp-src-include="~/bootstrap-confirmation2/dist/*.min.js"></script>
-
 </body>
 </html>
+<script>
+    function changeurl(controller, action) {
+        var new_url = "hhttps://localhost:44383/" + controller + "/" + action;
+        window.history.pushState("data", "Title", new_url);
+        $(document).ready(function () {
+
+            $("#newposts").on("click", function (a) {
+                alert("Hi");
+                a.preventDefault();
+                changeurl("Admin", "NewPosts");
+                $("#content").load("/Admin/NewPosts");
+            });
+            $("#posts").on("click", function (b) {
+                b.preventDefault();
+                changeurl("Admin", "Index");
+                $("#content").load("/Admin/GetAjaxView", { viewname: "Index" });
+            });
+
+            $("#users").on("click", function (c) {
+                c.preventDefault();
+                changeurl("Users", "Index");
+                $("#content").load("/Users/Index");
+            });
+            $("#roles").on("click", function (d) {
+                d.preventDefault();
+                changeurl("Roles", "Index");
+                $("#content").load("/Roles/Index");
+            });
+        });
+</script>

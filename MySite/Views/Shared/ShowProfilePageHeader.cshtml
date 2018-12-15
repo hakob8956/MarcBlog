@@ -5,7 +5,89 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    @{string title = Model.email;
+                    @if (Model.AllowEdit == 1)
+                    {
+                        @using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+
+
+                            string title = Model.email;
+                            if (Model.Profile.FirstName != null && Model.Profile.LastName != null)
+                            {
+                                title = $"{Model.Profile.FirstName} {Model.Profile.LastName}";
+                            }
+                            else if (Model.Profile.FirstName != null)
+                            {
+                                title = Model.Profile.FirstName;
+                            }
+
+                            <h1 style="color:#F3F3F3;cursor:default">@title</h1>
+                            if (Model.Profile.ImageData == null)
+                            {
+                                <img src="https://picsum.photos/320/250" alt="Avatar" class="image card-img-top avatar">
+
+                            }
+                            else
+                            {
+                                <img class="img-thumbnail" class="avatar"
+                                     src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" width="320" height="250" />
+                            }
+                            <span class="subheading">
+                                <span style="color:#98E8D6">FirstName:</span>
+                                <input type="text" class="form-control myInput" value="@Model.Profile.FirstName" name="FirstName" />
+                            </span>
+                            <span class="subheading">
+                                <span style="color:#98E8D6">LastName:</span>
+                                <input type="text" class="form-control myInput" value="@Model.Profile.LastName" name="LastName" />
+                            </span>
+                            <span class="subheading">
+                                <span style="color:#98E8D6">Email:</span>
+                                <input type="text" class="form-control myInput" value="@Model.email" name="Email" />
+                            </span>
+
+
+                            <span class="subheading"><span style="color:#98E8D6">Description:</span><br /><textarea class="form-control myInput" rows="2" name="Description" style="resize:none" maxlength="120">@Model.Profile.Description</textarea></span>
+
+                            <div style="position:relative;">
+                                <span style="color:#98E8D6">
+                                    Profile Image:<br />
+                                </span>
+                                <a class='btn' href='javascript:;'>
+                                    Select File...
+                                    <input type="file" name="Image" size="40" class="btn btn-link"
+                                           style="position:absolute;z-index:2;top:0;
+                                                 left:0;filter: alpha(opacity=0); opacity:0;
+                                                 background-color:transparent;color:transparent;"
+                                           onchange='$("#upload-file-info").html($(this).val());'>
+                                </a>
+                                <span class='label label-info' id="upload-file-info"></span>
+                                @if (TempData["error"] != null)
+                                {
+                                    <div class="alert alert-danger">@TempData["error"]</div>
+                                }
+                                else
+                                {
+                                    @if (Model.Profile.ImageData == null)
+                                    {
+                                        <div class="form-text" style="font-size:18px;margin-left:25px;color:#784F61;cursor:default">No Image</div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+
+                                }
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="submitEdit" type="submit" style="width: 160px;border-radius: 2px">Save</button>
+                            <span class="subheading"><span style="color:red">@Html.ValidationSummary()</span></span>
+
+                        }
+                    }
+                    else
+                    {
+
+                        string title = Model.email;
                         if (Model.Profile.FirstName != null && Model.Profile.LastName != null)
                         {
                             title = $"{Model.Profile.FirstName} {Model.Profile.LastName}";
@@ -14,26 +96,28 @@
                         {
                             title = Model.Profile.FirstName;
                         }
-                    }
-                    <h1 style="color:#F3F3F3;cursor:default">@title</h1>
-                    @if (Model.Profile.ImageData == null)
-                    {
-                        <img src="https://picsum.photos/320/250" alt="Avatar" class="image card-img-top avatar">
 
+                        <h1 style="color:#F3F3F3;cursor:default">@title</h1>
+                        if (Model.Profile.ImageData == null)
+                        {
+                            <img src="https://picsum.photos/320/250" alt="Avatar" class="image card-img-top avatar">
+
+                        }
+                        else
+                        {
+                            <img class="img-thumbnail" class="avatar"
+                                 src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" width="320" height="250" />
+                        }
+                        <span class="subheading"><span style="color:#98E8D6">FirstName:</span> @Model.Profile.FirstName</span>
+                        <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
+                        <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
+
+                        <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
+                        <span class="subheading"><span style="color:#98E8D6">Description:</span><br />@Model.Profile.Description</span>
                     }
-                    else
-                    {
-                        <img class="img-thumbnail" class="avatar"
-                             src="@Url.Action("GetAvatar", "Home", new { Model.Profile.ProfileID })" />
-                    }
-                    <span class="subheading"><span style="color:#98E8D6">FirstName:</span> @Model.Profile.FirstName</span>
-                    <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
-                    <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
-                    @*<span class="subheading">Viewers: @Model.Profile.Viewers</span>*@
-                    <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
-                    <span class="subheading"><span style="color:#98E8D6">Description:</span><br />.....</span>
 
                 </div>
+
                 <span class="fa-pull-right">
                     <form asp-action="SubAjax" asp-controller="Profile" id="myForm">
                         <input type="hidden" name="profileID" id="profileID" value="@Model.Profile.ProfileID" />
@@ -45,18 +129,69 @@
                                 {<*@<p style="margin-top:-10px;margin-left:-16px" id="mySubText">Subscribe:@Model.Profile.Folowers</p>
                             </button>
                         </form>
-
+                        @if (Model.Me)
+                        {
+                            <button class="btn  btn-secondary btn-sm" style="width:125px;height:20px;margin-top:3px" id="editProfileButton" type="button">
+                                <p style="margin-top:-10px;margin-left:-16px">Edit</p>
+                            </button>
+                        }
                     </span>
                 </div>
             </div>
         </div>
-    </header>
 
+    </header>
     <style>
+
         .avatar {
             width: 320px;
             height: 250px;
             border: solid 2px #524545;
+        }
+
+        .myInput {
+            margin: auto;
+            width: 50%;
+        }
+
+        .Mcontainer {
+            position: relative;
+            width: 100%;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .Mcontainer:hover .image {
+            opacity: 0.3;
+        }
+
+        .Mcontainer:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
         }
     </style>
 

@@ -1,6 +1,7 @@
 ﻿@model ProfileViewModel
 <!-- Page Header -->
-@Html.Partial("ShowProfilePageHeader", Model)
+<div id="contentProfile">@Html.Partial("ShowProfilePageHeader", Model)</div>
+
 <!-- Main Content -->
 <div class="container">
     <div class="col-lg-11 col-md-10 mx-auto">
@@ -12,12 +13,10 @@
                 <div class="d-flex flex-row bd-highlight mb-3">
                     <div class="p-2 bd-highlight" style="width:160px">
                         @*@await Component.InvokeAsync("NavigationMenu")*@
-
                         <select class="custom-select" id="inputGroupSelect04"
                                 aria-label="Example select with button addon"
                                 style="font-size:15px" name="category">
                             <option value="All" selected>All</option>
-
                             @foreach (string category in Model.MyPosts.Categories)
                             {
                                 if (category.Equals(Model.MyPosts.CurrentCategory))
@@ -33,7 +32,6 @@
                         </select>
                     </div>
                     <div class="main p-2 bd-highlight">
-
                         <!-- Actual search box -->
                         <div class="form-group has-search">
                             <span class="fa fa-search form-control-feedback"></span>
@@ -45,41 +43,25 @@
                         <button type="submit" class="btn btn-primary" style="padding:8px;border-radius:8px">
                             <p style="font-size:12px;display:inline">Search</p>
                         </button>
-
                     </div>
-
 
                 </div>
             }
+            <h3 class="h3 text-center  font-weight-bold">My Posts</h3>
             <hr />
 
-            <div class="row">
-                <div class="col-lg-11 col-md-10 mx-auto">
-                    @foreach (var p in Model.MyPosts.Posts)
-                    {
-                        @Html.Partial("ShowBlocksPartial", p)
-                    }
-
-                </div>
-
-            </div>
-
-            <div page-model="@Model.MyPosts.PagingInfo" page-action="Index" page-classes-enabled="true"
-                 page-class="btn" page-class-normal="btn-default"
-                 page-class-selected="btn-primary" page-url-category="@Model.MyPosts.CurrentCategory"
-                 class="btn-group pull-right">
-            </div>
+            @Html.Partial("ShowBlocksPartial", Model.MyPosts)
 
         }
         else
         {
             <p>No Posts</p>
         }
-
     </div>
 </div>
 @section Style{
     <style>
+
 
         .subheading {
             cursor: default;
@@ -109,12 +91,19 @@
         }
     </style>
 }
+
+<script type="text/javascript">
+    $("#editProfileButton").click(function (e) {
+        e.preventDefault();
+      
+        $("#contentProfile").load("/Profile/Index/", { ajaxRequest: 1, allowEdit: 1, profileID:@Model.Profile.ProfileID});
+        //window.history.pushState("data", "Title", "https://localhost:44383/Profile/Edit");
+    });
+
+</script>
 <script type="text/javascript">
     var countFolower = Number(@Model.Profile.Folowers);
     $("#myForm").submit(function (event) {
-        console.log("Working");
-        console.log($("#profileID").val() + " Id");
-        console.log($("#returnUrl").val() + " Id");
 
         event.preventDefault();
         var testData =

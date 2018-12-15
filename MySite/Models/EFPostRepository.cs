@@ -29,6 +29,7 @@ namespace MySite.Models
                 if (dbEntry != null)
                 {
                     dbEntry.UserID = post.UserID;
+                    dbEntry.ProfileID = post.ProfileID;
                     dbEntry.Title = post.Title;
                     dbEntry.Description = post.Description;                   
                     dbEntry.Category = post.Category;

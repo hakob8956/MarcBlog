@@ -23,18 +23,16 @@
         };
     }
     @Html.Partial("ShowBreadcrumb", broad)
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "myFormSearch" }))
     {
 
         <div class="d-flex flex-row bd-highlight mb-3">
             <div class="p-2 bd-highlight" style="width:160px">
                 @*@await Component.InvokeAsync("NavigationMenu")*@
-
-                <select class="custom-select" id="inputGroupSelect04"
+                <select class="custom-select" id="CategorySelected"
                         aria-label="Example select with button addon"
                         style="font-size:15px" name="category">
                     <option value="All" selected>All</option>
-
                     @foreach (string category in Model.Categories)
                     {
                         if (category.Equals(Model.CurrentCategory))
@@ -50,54 +48,73 @@
                 </select>
             </div>
             <div class="main p-2 bd-highlight">
-
                 <!-- Actual search box -->
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search" name="title">
+                    <input type="text" class="form-control" placeholder="Search" name="title" id="search">
                 </div>
             </div>
             <div class="p-2 bd-highlight">
                 <button type="submit" class="btn btn-primary" style="padding:8px;border-radius:8px">
                     <p style="font-size:12px;display:inline">Search</p>
                 </button>
-
             </div>
-
 
         </div>
     }
 
 
 
+    <div class="d-flex flex-row-reverse bd-highlight" style="height:23px">
+        <div class="p-1 bd-highlight">
+            <form action="/" method="get" id="sortForm">
+                <select class="custom-select" id="sortSelected"
+                        aria-label=""
+                        style="font-size:small;height:32px;width:70px" name="category">
+                    <option value="New">New</option>
+                    <option value="Old">Old</option>
+                </select>           
+            </form>
+        </div>
+    </div>
+    <hr />
     <div class="float-right" style="margin-bottom:1px">
+
         <a asp-action="AddPost" asp-controller="Home" title="Add Post" style="color:#0085A1" id="AddPost">
             <i class="fas fa-plus-circle"></i>
         </a>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-lg-11 col-md-10 mx-auto">
-            @foreach (var p in Model.Posts)
-            {
-                @Html.Partial("ShowBlocksPartial", p)
-            }
-            @*<div class="clearfix">
-                    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-                </div>*@
-
-        </div>
 
     </div>
-
-    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
-         page-class="btn" page-class-normal="btn-default"
-         page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
-         class="btn-group pull-right">
+    <div id="postContent">
+        @Html.Partial("ShowBlocksPartial", Model)
     </div>
 </div>
+
+
+<script>
+
+    $("#myFormSearch").submit(function (e) {
+        console.log("It's Here");
+        var search = $("#search").val();
+        var category = $("#CategorySelected").val();
+        e.preventDefault();
+        console.log("Serch " + search + " Category " + category);
+
+        $("#postContent").load("/Index", { title: search, category: category, requestAjax: 1 });
+    });
+    $("#sortSelected").change(function (e) {
+        e.preventDefault();
+
+        var sortSelected = $("#sortSelected").val();
+
+        $("#postContent").load("/Index", { sortSelected: sortSelected, requestAjax: 1, category: "" });
+    });
+
+</script>
+
 @section Style{
     <style>
+
         /* Styles for wrapping the search box */
 
         .main {
@@ -121,6 +138,7 @@
             pointer-events: none;
             color: #aaa;
         }
+
         #AddPost:hover {
             color: #00657b !important;
         }

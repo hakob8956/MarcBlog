@@ -30,11 +30,10 @@ namespace MySite.Controllers
             this.repository = repository;
 
         }
-        public ViewResult Index()
-        {
-            var Post = repository.Posts.Where(p => p.Allow == 1);
-            return View(Post);
-        }
+        private  int CountNewPosts{ get { return repository.Posts.Where(p => p.Allow == 0).Count(); }}
+
+        public ViewResult Index() => View(repository.Posts.Where(p => p.Allow == 1));
+   
         public ViewResult Edit(int postID) =>
             View(repository.Posts.FirstOrDefault(p => p.PostID == postID));
 
@@ -137,6 +136,7 @@ namespace MySite.Controllers
                 var profile = _profile.Profiles.FirstOrDefault(p => p.UserID == user.Id);
                 post.UserID = user.Id;
                 post.DateTime = DateTime.Now;
+                post.ProfileID = profile.ProfileID;
                 if (User.IsInRole("admin"))
                     post.Allow = 1;
                 else
@@ -154,10 +154,9 @@ namespace MySite.Controllers
                 if (User.IsInRole("admin"))
                     return View(post);
                 else
-                    return RedirectToAction("AddPost", "Home",post);
+                    return RedirectToAction("AddPost", "Home", post);
             }
         }
-
 
         public IActionResult Menu() => View();
         public IActionResult NewPosts() => View(repository.Posts.Where(p => p.Allow == 0));

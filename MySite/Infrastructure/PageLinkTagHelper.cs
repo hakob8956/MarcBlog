@@ -15,9 +15,11 @@ namespace MySite.Infrastructure
     {
         private IUrlHelperFactory urlHelperFactory;
 
+
         public PageLinkTagHelper(IUrlHelperFactory helperFactory)
         {
             urlHelperFactory = helperFactory;
+          
         }
 
         [ViewContext]
