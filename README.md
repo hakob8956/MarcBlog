@@ -1,2 +1,4 @@
 # MarcBlog
-in developing
+
+## http://marcblog.gear.host/
+### in developing
