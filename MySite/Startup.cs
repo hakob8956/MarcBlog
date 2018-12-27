@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using MySite.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,7 +29,7 @@ namespace MySite
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["ConnectionStrings:DefaultConnection"]));
@@ -53,13 +55,13 @@ namespace MySite
         }
 
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseStatusCodePages();
-            }
+            //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
+            //var logger = loggerFactory.CreateLogger("FileLogger");
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+
             app.UseAuthentication();
 
             app.UseStaticFiles();
@@ -67,6 +69,7 @@ namespace MySite
             app.UseIdentity();
 #pragma warning restore CS0618 // Type or member is obsolete
             //app.UseMvcWithDefaultRoute();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "Error", template: "Error",
@@ -103,7 +106,7 @@ namespace MySite
 
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
-            SeedData.EnsurePopulated(app);
+
         }
     }
 }

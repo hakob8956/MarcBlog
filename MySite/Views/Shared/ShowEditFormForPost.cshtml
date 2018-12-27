@@ -14,6 +14,7 @@ FormMethod.Post, new { enctype = "multipart/form-data" }))
 
                     case "UserID":
                     case "PostID":
+                    case "ProfileID":
                     case "ImageData":
                     case "ImageMimeType":
                     case "DateTime":
@@ -34,7 +35,7 @@ FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 @Html.TextBox(property.PropertyName, null,
                                     new { @class = "form-control" })
                             }
-                            @Html.ValidationMessage(property.PropertyName)
+                            <p style="color:red;font-size:14px"><b>@Html.ValidationMessage(property.PropertyName) </b></p>
                         </div>
                         break;
                 }

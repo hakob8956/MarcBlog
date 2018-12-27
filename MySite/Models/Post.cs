@@ -16,7 +16,7 @@ namespace MySite.Models
         [Required(ErrorMessage = "Please enter a product name")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter a description")]
-        [MaxLength(180, ErrorMessage = "Max enter a 180 characters")]
+        [MaxLength(250, ErrorMessage = "Max enter a 250 characters")]
         [MinLength(20, ErrorMessage = "Min enter a 20 characters")]
 
         public string Description { get; set; }

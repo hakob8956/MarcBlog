@@ -1,0 +1,968 @@
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (221ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3392.192ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1295.9874ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 4800.3424ms
+Request finished in 7767.4644ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/robots.txt  
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/bootstrap/css/bootstrap.min.css  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (robots.txt, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Sending file. Request path: '/vendor/bootstrap/css/bootstrap.min.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\bootstrap\css\bootstrap.min.css'
+Request finished in 155.6361ms 200 text/css
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 190.2696ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 557.662ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 759.1213ms
+Request finished in 766.8892ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/normalize.css/normalize.css  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/normalize.css/normalize.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\normalize.css\normalize.css'
+Request finished in 12.5905ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/css/my-blog.min.css  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/css/my-blog.min.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\css\my-blog.min.css'
+Request finished in 5.8982ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/ckeditor.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/jquery/jquery.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/vendor/jquery/jquery.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\jquery\jquery.min.js'
+Request finished in 80.1808ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/jquery-validation/dist/additional-methods.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/vendor/jquery-validation/dist/additional-methods.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\jquery-validation\dist\additional-methods.min.js'
+Request finished in 40.0767ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/jquery-validation/dist/jquery.validate.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/vendor/jquery-validation/dist/jquery.validate.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\jquery-validation\dist\jquery.validate.min.js'
+Request finished in 29.0821ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js'
+Request finished in 37.7331ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/vendor/bootstrap/js/bootstrap.bundle.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/vendor/bootstrap/js/bootstrap.bundle.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\vendor\bootstrap\js\bootstrap.bundle.min.js'
+Request finished in 54.3257ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/js/my-blog.min.js  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/js/my-blog.min.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\js\my-blog.min.js'
+Request finished in 5.4166ms 200 application/javascript
+Sending file. Request path: '/admin/ckeditor/ckeditor.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\ckeditor.js'
+Request finished in 491.8572ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/img/home-bg.jpg  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Sending file. Request path: '/img/home-bg.jpg'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\img\home-bg.jpg'
+Request finished in 19.3013ms 200 image/jpeg
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (682ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 685.2197ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (235ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (199ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (227ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 669.7476ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1367.9543ms
+Request finished in 1397.3076ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1938.9365ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (175ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1048.9253ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 3074.9656ms
+Request finished in 3435.2918ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/img/home-bg.jpg  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+The file /img/home-bg.jpg was not modified
+Request finished in 28.6014ms 304 image/jpeg
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 183.8223ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 547.7935ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 736.3675ms
+Request finished in 743.5585ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Account/Login application/x-www-form-urlencoded 220
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+Route matched with {action = "Login", controller = "Account"}. Executing action MySite.Controllers.AccountController.Login (MySite)
+Executing action method MySite.Controllers.AccountController.Login (MySite) with arguments (MySite.Models.ViewModels.LoginModel) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (192ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Date], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName], [u].[Year]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Executed DbCommand (180ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+Executed DbCommand (181ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+Executed DbCommand (182ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+Executed DbCommand (178ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0
+AuthenticationScheme: Identity.Application signed in.
+Executed action method MySite.Controllers.AccountController.Login (MySite), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 1430.1916ms.
+Executing RedirectResult, redirecting to /Page1.
+Executed action MySite.Controllers.AccountController.Login (MySite) in 1522.1591ms
+Request finished in 1570.2304ms 302 
+Request starting HTTP/1.1 GET http://localhost:44383/Page1  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (184ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 187.421ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (186ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 768.2992ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 965.4968ms
+Request finished in 977.4767ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (186ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 188.624ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Request starting HTTP/1.1 POST http://localhost:44383/Admin application/x-www-form-urlencoded 225
+Route matched with {action = "Index", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Index (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Index (MySite) - Validation state: Valid
+Executed action method MySite.Controllers.AdminController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.0853ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (182ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (179ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 728.6069ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 920.1651ms
+Request finished in 965.0256ms 200 text/html; charset=utf-8
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (834ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Index executed in 1911.1262ms.
+Executed action MySite.Controllers.AdminController.Index (MySite) in 1939.9881ms
+Request finished in 1949.3388ms 200 text/html; charset=utf-8
+Connection id "0HLJC74U1EPU6", Request id "0HLJC74U1EPU6:00000001": the application completed without reading the entire request body.
+Request starting HTTP/1.1 GET http://localhost:44383/admin/css/styles.css  
+Sending file. Request path: '/admin/css/styles.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\css\styles.css'
+Request finished in 68.1158ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 184.8863ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (178ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 723.7611ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 911.6714ms
+Request finished in 915.5464ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/Admin/Edit?postID=1  
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (1) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 181.1854ms.
+Executing ViewResult, running view Edit.
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 268.6766ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 455.176ms
+Request finished in 468.893ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/config.js?t=I8BG  
+Sending file. Request path: '/admin/ckeditor/config.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\config.js'
+Request finished in 32.7069ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/skins/moono-lisa/editor.css?t=I8BG  
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/lang/en.js?t=I8BG  
+Sending file. Request path: '/admin/ckeditor/lang/en.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\lang\en.js'
+Request finished in 42.5276ms 200 application/javascript
+Sending file. Request path: '/admin/ckeditor/skins/moono-lisa/editor.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\skins\moono-lisa\editor.css'
+Request finished in 54.9723ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/styles.js?t=I8BG  
+Sending file. Request path: '/admin/ckeditor/styles.js'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\styles.js'
+Request finished in 19.4193ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css  
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/plugins/tableselection/styles/tableselection.css  
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/plugins/scayt/dialogs/dialog.css  
+Sending file. Request path: '/admin/ckeditor/plugins/tableselection/styles/tableselection.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\plugins\tableselection\styles\tableselection.css'
+Request finished in 25.214ms 200 text/css
+Sending file. Request path: '/admin/ckeditor/plugins/scayt/dialogs/dialog.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\plugins\scayt\dialogs\dialog.css'
+Request finished in 10.6404ms 200 text/css
+Sending file. Request path: '/admin/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css'
+Request finished in 40.5296ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css  
+Sending file. Request path: '/admin/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css'
+Request finished in 5.6801ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/skins/moono-lisa/icons.png?t=59246e9  
+Sending file. Request path: '/admin/ckeditor/skins/moono-lisa/icons.png'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\skins\moono-lisa\icons.png'
+Request finished in 5.1121ms 200 image/png
+Request starting HTTP/1.1 GET http://localhost:44383/admin/ckeditor/contents.css?t=I8BG  
+Sending file. Request path: '/admin/ckeditor/contents.css'. Physical path: 'D:\Programming\MarcBlog\MySite\wwwroot\admin\ckeditor\contents.css'
+Request finished in 5.4406ms 200 text/css
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 178.3603ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (183ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 729.8069ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 910.9213ms
+Request finished in 914.8309ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin/Edit multipart/form-data; boundary=----WebKitFormBoundary0RmsmIexOSonYqe5 1026
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (MySite.Models.Post, ) - Validation state: Invalid
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.1756ms.
+Executing ViewResult, running view Edit.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 182.3101ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 246.0725ms
+Request finished in 283.8869ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (346ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 348.1479ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (244ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (177ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 787.2203ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1137.6832ms
+Request finished in 1142.9912ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin/Edit multipart/form-data; boundary=----WebKitFormBoundaryVcA67S7aeO9Rz3GT 1026
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (MySite.Models.Post, ) - Validation state: Invalid
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0876ms.
+Executing ViewResult, running view Edit.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (829ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 835.6654ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 843.0847ms
+Request finished in 852.6133ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 179.4162ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (180ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 721.2106ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 907.8957ms
+Request finished in 917.269ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 183.0286ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (219ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (176ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 760.4479ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 947.5131ms
+Request finished in 957.8286ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 180.922ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (200ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (184ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (186ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 755.2993ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 939.5271ms
+Request finished in 945.7084ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 181.297ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (177ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (185ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 728.7698ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 913.7819ms
+Request finished in 949.784ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Request starting HTTP/1.1 DEBUG http://localhost:1213/  0
+Request finished in 411.2945ms 200 
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (364ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2818.764ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (328ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1945.6451ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 4967.763ms
+Request finished in 6071.6927ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/img/home-bg.jpg  
+The file /img/home-bg.jpg was not modified
+Request finished in 175.6661ms 304 image/jpeg
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (200ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 299.989ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (194ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 824.1307ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1163.0516ms
+Request finished in 1213.88ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin application/x-www-form-urlencoded 225
+Route matched with {action = "Index", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Index (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Index (MySite) - Validation state: Valid
+Executed action method MySite.Controllers.AdminController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.3295ms.
+Executing ViewResult, running view Index.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (197ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Index executed in 623.1478ms.
+Executed action MySite.Controllers.AdminController.Index (MySite) in 689.9269ms
+Request finished in 723.5606ms 200 text/html; charset=utf-8
+Connection id "0HLJC75RRT6NP", Request id "0HLJC75RRT6NP:00000003": the application completed without reading the entire request body.
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 227.5324ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (200ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (193ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (190ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 807.32ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1054.7769ms
+Request finished in 1139.3745ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/Admin/Edit?postID=1  
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (1) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 207.4836ms.
+Executing ViewResult, running view Edit.
+Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 258.9705ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 508.5751ms
+Request finished in 549.703ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 368.0223ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (195ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (196ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (191ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (190ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 799.6701ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1392.1159ms
+Request finished in 1477.9418ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin/Edit multipart/form-data; boundary=----WebKitFormBoundary9c9vNPNLj76n9Py8 1025
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (MySite.Models.Post, ) - Validation state: Invalid
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 30530.5518ms.
+Executing ViewResult, running view Edit.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (247ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 303.1344ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 30942.43ms
+Request finished in 30997.7573ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 233.0551ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (195ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 825.4517ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1089.6546ms
+Request finished in 1161.5163ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 251.6735ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (205ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (197ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 867.9789ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1256.2707ms
+Request finished in 1577.0305ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/img/home-bg.jpg  
+The file /img/home-bg.jpg was not modified
+Request finished in 20.9434ms 304 image/jpeg
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 211.9085ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (199ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (198ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 814.4794ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1048.8628ms
+Request finished in 1411.6195ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin application/x-www-form-urlencoded 225
+Route matched with {action = "Index", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Index (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Index (MySite) - Validation state: Valid
+Executed action method MySite.Controllers.AdminController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0303ms.
+Executing ViewResult, running view Index.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Index executed in 415.6099ms.
+Executed action MySite.Controllers.AdminController.Index (MySite) in 452.253ms
+Request finished in 484.375ms 200 text/html; charset=utf-8
+Connection id "0HLJC75RRT6NQ", Request id "0HLJC75RRT6NQ:00000007": the application completed without reading the entire request body.
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 233.2527ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (204ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (191ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (197ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 816.0561ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1078.5172ms
+Request finished in 1124.1902ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/Admin/Edit?postID=1  
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Authorization was successful.
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (1) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 216.0247ms.
+Executing ViewResult, running view Edit.
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 6374.2049ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 6626.7196ms
+Request finished in 6656.5117ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (190ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 202.5925ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (207ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (270ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (195ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (195ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 910.0583ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1142.3138ms
+Request finished in 1168.6838ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin/Edit multipart/form-data; boundary=----WebKitFormBoundarypzWOBOfvvotg7lBc 1027
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (MySite.Models.Post, ) - Validation state: Invalid
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1840.0689ms.
+Executing ViewResult, running view Edit.
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 214.1802ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 2151.0461ms
+Request finished in 2237.5528ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (221ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 261.465ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (519ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (191ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1133.833ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 1433.8023ms
+Request finished in 1467.1521ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:44383/Admin/Edit multipart/form-data; boundary=----WebKitFormBoundarypzWOBOfvvotg7lBc 1027
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (204ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (193ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+Executed DbCommand (213ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+Executed DbCommand (228ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0
+Executed DbCommand (194ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0
+Route matched with {action = "Edit", controller = "Admin"}. Executing action MySite.Controllers.AdminController.Edit (MySite)
+Executing action method MySite.Controllers.AdminController.Edit (MySite) with arguments (MySite.Models.Post, ) - Validation state: Invalid
+Executed action method MySite.Controllers.AdminController.Edit (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2029.7027ms.
+Executing ViewResult, running view Edit.
+Executed DbCommand (563ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed ViewResult - view Edit executed in 1583.3888ms.
+Executed action MySite.Controllers.AdminController.Edit (MySite) in 3681.0774ms
+Request finished in 5123.7498ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (685ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 727.9735ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (563ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (667ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (259ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (310ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1870.9361ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 2655.2997ms
+Request finished in 2692.0125ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (843ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5676.8873ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (501ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (663ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (915ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (1,904ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 4626.3493ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 10390.3818ms
+Request finished in 10986.5977ms 200 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:44383/img/home-bg.jpg  
+The file /img/home-bg.jpg was not modified
+Request finished in 30.9484ms 304 image/jpeg
+Request starting HTTP/1.1 POST http://localhost:44383/Admin application/x-www-form-urlencoded 225
+Request starting HTTP/1.1 GET http://localhost:44383/favicon.ico  
+Route matched with {action = "Index", controller = "Home"}. Executing action MySite.Controllers.HomeController.Index (MySite)
+Executing action method MySite.Controllers.HomeController.Index (MySite) with arguments (favicon.ico, , 1, , 0) - Validation state: Valid
+Entity Framework Core 2.1.4-rtm-31024 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (275ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed action method MySite.Controllers.HomeController.Index (MySite), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2219.7376ms.
+Executing ViewResult, running view Index.
+Executed DbCommand (212ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (185ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[PostID], [p].[Allow], [p].[Author], [p].[Category], [p].[DateTime], [p].[Description], [p].[ImageData], [p].[ImageMimeType], [p].[ProfileID], [p].[Text], [p].[Title], [p].[UserID]
+FROM [Posts] AS [p]
+Executed DbCommand (285ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[Date], [e].[Email], [e].[EmailConfirmed], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName], [e].[Year]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+Executed DbCommand (184ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[ProfileID], [p].[Description], [p].[FirstName], [p].[Folowers], [p].[ImageData], [p].[ImageMimeType], [p].[LastName], [p].[UserID], [p].[Viewers]
+FROM [Profiles] AS [p]
+Executed ViewResult - view Index executed in 1723.2142ms.
+Executed action MySite.Controllers.HomeController.Index (MySite) in 4119.1807ms
+Request finished in 4542.3178ms 200 text/html; charset=utf-8

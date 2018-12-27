@@ -10,7 +10,7 @@ namespace RolesInitializerApp
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void  Main(string[] args)
         {
             //BuildWebHost(args).Run();
             var host = BuildWebHost(args);
@@ -23,7 +23,7 @@ namespace RolesInitializerApp
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var profile = services.GetRequiredService<IProfile>();
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager,profile);
+                    
                 }
                 catch (Exception ex)
                 {
