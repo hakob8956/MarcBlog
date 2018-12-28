@@ -93,6 +93,18 @@ namespace MySite.Controllers
             }
             return NotFound();
         }
+        public IActionResult AjaxSearch(int profileID, string category, string title = null, int page = 1)
+        {
+            var profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
+            if (profile != null)
+            {
+                var posts = _post.Posts.Where(p => p.ProfileID == profile.ProfileID);
+                PostViewModel postModel = SetPost(posts, category, page, title);
+                return PartialView("ShowBlocksPartial", postModel);
+            }
+            return PartialView("ShowBlockPartial", null);
+
+        }
 
         //[HttpGet]
         //public IActionResult Edit()

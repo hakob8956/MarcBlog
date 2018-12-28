@@ -15,12 +15,12 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover  table-striped ">
                         <tr>
                             <th scope="col">Email</th>
                             <th scope="col">Year</th>
                             <th scope="col">Date Register</th>
-                            <th scope="col"></th>
+
                         </tr>
                         @foreach (var user in Model)
                         {
@@ -28,16 +28,18 @@
                                 <td scope="row">@user.Email</td>
                                 <td>@user.Year</td>
                                 <td>@user.Date</td>
-                                <td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="4" style="border-bottom: 1px solid darkslategray">
+
                                     <form asp-action="Delete" asp-route-id="@user.Id" method="post" id="myForm">
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-route-id="@user.Id" title="Edit"><i class="fas fa-user-edit"></i></a>
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="ChangePassword" asp-route-id="@user.Id" title="Change Password"><i class="fas fa-key"></i></a>
                                         <a class="btn btn-sm btn-primary normalButton" asp-action="Edit" asp-controller="Roles" asp-route-userid="@user.Id" title="Access rights"><i class="fas fa-universal-access"></i></a>
-
                                         <button class="btn btn-sm btn-danger normalButton" title="Delete" type="submit">
                                             <i class="fas fa-user-minus"></i>
                                         </button>
-
                                     </form>
                                 </td>
                             </tr>
@@ -49,4 +51,3 @@
         </div>
     </div>
 </div>
-

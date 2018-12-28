@@ -30,10 +30,10 @@ namespace MySite.Controllers
             this.repository = repository;
 
         }
-        private  int CountNewPosts{ get { return repository.Posts.Where(p => p.Allow == 0).Count(); }}
+        private int CountNewPosts { get { return repository.Posts.Where(p => p.Allow == 0).Count(); } }
 
         public ViewResult Index() => View(repository.Posts.Where(p => p.Allow == 1));
-   
+
         public ViewResult Edit(int postID) =>
             View(repository.Posts.FirstOrDefault(p => p.PostID == postID));
 
@@ -117,13 +117,17 @@ namespace MySite.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 if (image != null)
                 {
+
+
                     if (IsImage(image))
                     {
                         post.ImageMimeType = image.ContentType;
                         post.ImageData = new byte[image.Length];
                         image.OpenReadStream().Read(post.ImageData, 0, (int)image.Length);
+
                     }
                     else
                     {

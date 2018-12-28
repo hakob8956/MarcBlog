@@ -7,13 +7,13 @@
     <div class="col-lg-11 col-md-10 mx-auto">
         @if (Model.MyPosts != null)
         {
-            @using (Html.BeginForm("Index", "Profile", FormMethod.Get))
+            @using (Html.BeginForm("Index", "Profile", FormMethod.Get, new { Id = "myFormSearch" }))
             {
 
                 <div class="d-flex flex-row bd-highlight mb-3">
                     <div class="p-2 bd-highlight" style="width:160px">
                         @*@await Component.InvokeAsync("NavigationMenu")*@
-                        <select class="custom-select" id="inputGroupSelect04"
+                        <select class="custom-select" id="CategorySelected"
                                 aria-label="Example select with button addon"
                                 style="font-size:15px" name="category">
                             <option value="All" selected>All</option>
@@ -35,7 +35,7 @@
                         <!-- Actual search box -->
                         <div class="form-group has-search">
                             <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control" placeholder="Search" name="title">
+                            <input type="text" class="form-control" placeholder="Search" name="title" id="search">
                         </div>
                     </div>
                     <div class="p-2 bd-highlight">
@@ -50,7 +50,7 @@
             <h3 class="h3 text-center  font-weight-bold">My Posts</h3>
             <hr />
 
-            @Html.Partial("ShowBlocksPartial", Model.MyPosts)
+            <div id="postContent">@Html.Partial("ShowBlocksPartial", Model.MyPosts)</div>
 
         }
         else
@@ -91,55 +91,64 @@
         }
     </style>
 }
+@section Script{
+    <script type="text/javascript">
+        $("#myFormSearch").submit(function (e) {
+            console.log("It's Here");
+            var search = $("#search").val();
+            var category = $("#CategorySelected").val();
+            e.preventDefault();
+            console.log("Serch " + search + " Category " + category);
 
-<script type="text/javascript">
-    $("#editProfileButton").click(function (e) {
-        e.preventDefault();
-      
-        $("#contentProfile").load("/Profile/Index/", { ajaxRequest: 1, allowEdit: 1, profileID:@Model.Profile.ProfileID});
-        //window.history.pushState("data", "Title", "https://localhost:44383/Profile/Edit");
-    });
-
-</script>
-<script type="text/javascript">
-    var countFolower = Number(@Model.Profile.Folowers);
-    $("#myForm").submit(function (event) {
-
-        event.preventDefault();
-        var testData =
-        {
-            'profileID': $("#profileID").val(),
-            'TestStr2': $("#returnUrl").val()
-        };
-
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("SubAjax","Profile")',
-            data: JSON.stringify(testData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: successFunc,
-            error: errorFunc
+            $("#postContent").load("/Profile/AjaxSearch", { profileID:@Model.Profile.ProfileID, title: search, category: category });
         });
-    });
-    function successFunc(data, status) {
-        var sub = document.getElementById("mySubText");
-        if (data === "Add") {
 
-            sub.innerHTML = "Subscribed:" + (countFolower += 1);
-            sub.style.color = "#C0C0C0";
+        $("#editProfileButton").click(function (e) {
+            e.preventDefault();
+
+            $("#contentProfile").load("/Profile/Index/", { ajaxRequest: 1, allowEdit: 1, profileID:@Model.Profile.ProfileID});
+            //window.history.pushState("data", "Title", "https://localhost:44383/Profile/Edit");
+        });
+
+        var countFolower = Number(@Model.Profile.Folowers);
+        $("#myForm").submit(function (event) {
+
+            event.preventDefault();
+            var testData =
+            {
+                'profileID': $("#profileID").val(),
+                'TestStr2': $("#returnUrl").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SubAjax","Profile")',
+                data: JSON.stringify(testData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: successFunc,
+                error: errorFunc
+            });
+        });
+        function successFunc(data, status) {
+            var sub = document.getElementById("mySubText");
+            if (data === "Add") {
+
+                sub.innerHTML = "Subscribed:" + (countFolower += 1);
+                sub.style.color = "#C0C0C0";
 
 
-        } else if (data === "Delete") {
+            } else if (data === "Delete") {
 
-            sub.innerHTML = "Subscribe :" + (countFolower -= 1);
-            sub.style.color = "#FFFFFF";
-        } else if (data === "NewUser") {
-            alert("Please Register or Login");
+                sub.innerHTML = "Subscribe :" + (countFolower -= 1);
+                sub.style.color = "#FFFFFF";
+            } else if (data === "NewUser") {
+                alert("Please Register or Login");
+            }
         }
-    }
 
-    function errorFunc(errorData) {
-        alert('Ошибка' + errorData.responseText);
-    }
-</script>
+        function errorFunc(errorData) {
+            alert('Ошибка' + errorData.responseText);
+        }
+    </script>
+}

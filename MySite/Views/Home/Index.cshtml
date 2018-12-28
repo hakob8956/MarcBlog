@@ -73,7 +73,7 @@
                         style="font-size:small;height:32px;width:70px" name="category">
                     <option value="New">New</option>
                     <option value="Old">Old</option>
-                </select>           
+                </select>
             </form>
         </div>
     </div>
@@ -90,27 +90,29 @@
     </div>
 </div>
 
+@section Script{
+    <script>
 
-<script>
+        $("#myFormSearch").submit(function (e) {
+            console.log("It's Here");
+            var search = $("#search").val();
+            var category = $("#CategorySelected").val();
+            e.preventDefault();
+            console.log("Serch " + search + " Category " + category);
 
-    $("#myFormSearch").submit(function (e) {
-        console.log("It's Here");
-        var search = $("#search").val();
-        var category = $("#CategorySelected").val();
-        e.preventDefault();
-        console.log("Serch " + search + " Category " + category);
+            $("#postContent").load("/Index", { title: search, category: category, requestAjax: 1 });
+        });
+        $("#sortSelected").change(function (e) {
+            e.preventDefault();
 
-        $("#postContent").load("/Index", { title: search, category: category, requestAjax: 1 });
-    });
-    $("#sortSelected").change(function (e) {
-        e.preventDefault();
+            var sortSelected = $("#sortSelected").val();
 
-        var sortSelected = $("#sortSelected").val();
+            $("#postContent").load("/Index", { sortSelected: sortSelected, requestAjax: 1, category: "" });
+        });
 
-        $("#postContent").load("/Index", { sortSelected: sortSelected, requestAjax: 1, category: "" });
-    });
+    </script>
+}
 
-</script>
 
 @section Style{
     <style>
