@@ -57,8 +57,8 @@ namespace MySite
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
-            //var logger = loggerFactory.CreateLogger("FileLogger");
+            loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
+            var logger = loggerFactory.CreateLogger("FileLogger");
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
 

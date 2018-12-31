@@ -47,10 +47,9 @@ namespace MySite.Controllers
                     var resultRole = await _userManager.AddToRoleAsync(user, "user");
                     if (resultRole.Succeeded)
                     {
-                        Profile profile = new Profile
-                        {
-                            UserID = user.Id
-                        };
+                        Profile profile = new Profile { UserID = user.Id };                    
+                        _profile.SaveProfile(profile);
+
                         return RedirectToAction("Index");
                     }                   
                 }

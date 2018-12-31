@@ -141,13 +141,18 @@ namespace MySite.Controllers
                 post.UserID = user.Id;
                 post.DateTime = DateTime.Now;
                 post.ProfileID = profile.ProfileID;
-                if (User.IsInRole("admin"))
-                    post.Allow = 1;
-                else
-                    post.Allow = 0;
                 post.Author = profile.FirstName == null ? user.Email.Split("@")[0] : profile.FirstName;
                 repository.SaveProduct(post);
-                TempData["message"] = $"{post.Title} has been saved";
+                if (User.IsInRole("admin"))
+                {
+                    TempData["message"] = $"{post.Title} has been saved";
+                    post.Allow = 1;
+                }
+                else
+                {
+                    TempData["message"] = "Your post is saved and will be reviewed";
+                    post.Allow = 0;
+                }
                 if (User.IsInRole("admin"))
                     return RedirectToAction("Index");
                 else

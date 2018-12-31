@@ -81,6 +81,9 @@
     <None Include="wwwroot\vendor\bootstrap-confirmation2\dist\bootstrap-confirmation.min.js.map" />
     <None Include="wwwroot\vendor\bootstrap-confirmation2\README.md" />
     <None Include="wwwroot\vendor\bootstrap-confirmation2\src\confirmation.js" />
+    <None Include="wwwroot\vendor\select2\select2.js" />
+    <None Include="wwwroot\vendor\select2\select2.min.js" />
+    <None Include="wwwroot\vendor\tilt\tilt.jquery.min.js" />
   </ItemGroup>
 
 

@@ -69,13 +69,13 @@ FormMethod.Post, new { enctype = "multipart/form-data" }))
 
                         <img class="img-thumbnail" width="150" height="150"
                              src="@Url.Action("GetImage", "Home",new { Model.PostID })" />
-                        @using (Html.BeginForm("DeleteImage", "Admin", FormMethod.Post))
+                        @*@using (Html.BeginForm("DeleteImage", "Admin", FormMethod.Post))
                         {
                             @Html.HiddenFor(p => p.PostID)
                             <button type="submit" class="btn btn-danger btn-sm">
                                 Delete
                             </button>
-                        }
+                        }*@
                     }
 
                 }

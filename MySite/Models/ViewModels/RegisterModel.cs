@@ -25,5 +25,6 @@ namespace MySite.Models.ViewModels
         public string PasswordConfirm { get; set; }
 
         public string Date { get; set; }
+        public string responseRecaptcha { get; set; }
     }
 }

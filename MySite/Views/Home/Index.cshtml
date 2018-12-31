@@ -22,7 +22,21 @@
             Category = Model.CurrentCategory
         };
     }
+
     @Html.Partial("ShowBreadcrumb", broad)
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="color:cornflowerblue;background-color:#F2F2F3;border-color:#F2F2F3;font-size:14px">
+            @TempData["message"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+
+
+
     @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "myFormSearch" }))
     {
 
