@@ -10,6 +10,10 @@ namespace MySite.Models.ViewModels
         public bool isSubscribe { get; set; }//check sub 
         public bool Me { get; set; } = false;//check your profile or another profile 
         public int AllowEdit { get; set; } = 0;//For Ajax Result Edit or not  1-Yes 0-No
+        public int MyProperty { get; set; }
+        public IEnumerable<FolowerListViewModel> folowersList { get; set; }
+        public IEnumerable<FolowerListViewModel> folowingList { get; set; }
+
 
 
 

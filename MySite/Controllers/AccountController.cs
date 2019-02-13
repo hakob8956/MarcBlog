@@ -93,7 +93,10 @@ namespace MySite.Controllers
 
         public IActionResult Login(string returnUrl = null)
         {
-
+            if (User.Identity.IsAuthenticated)
+            {
+                return NotFound();
+            }
             return View(new LoginModel());
         }
 
@@ -101,10 +104,7 @@ namespace MySite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return NotFound();
-            }
+           
             if (ModelState.IsValid)
             {
                 var result =

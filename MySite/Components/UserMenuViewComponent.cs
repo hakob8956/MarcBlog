@@ -12,7 +12,7 @@ namespace MySite.Components
         private readonly UserManager<User> _userManager;
         private readonly IProfile _profile;
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-        private string UserID { get; set; } = "0";
+        private string UserID { get; set; } = "0";//Not current user
         public UserMenuViewComponent(UserManager<User> userManager, IProfile profile)
         {
             _userManager = userManager;

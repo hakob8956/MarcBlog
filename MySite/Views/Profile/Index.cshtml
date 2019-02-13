@@ -1,10 +1,29 @@
 ﻿@model ProfileViewModel
 <!-- Page Header -->
 <div id="contentProfile">@Html.Partial("ShowProfilePageHeader", Model)</div>
-
+@*<div class="ProfileNav">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" asp-action="Index" asp-controller="Profile">My Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Profile" asp-action="Management">Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Profile" asp-action="Edit">Edit</a>
+            </li>
+        </ul>
+    </div>
+    <hr />*@
 <!-- Main Content -->
 <div class="container">
     <div class="col-lg-11 col-md-10 mx-auto">
+        <!-- Button trigger modal -->
+        @*<a href="#" class="" data-toggle="modal" data-target="#modalFolowers">
+            Folowers
+        </a>*@
+
+
         @if (Model.MyPosts != null)
         {
             @using (Html.BeginForm("Index", "Profile", FormMethod.Get, new { Id = "myFormSearch" }))
@@ -59,9 +78,105 @@
         }
     </div>
 </div>
+<!-- Modal Folowers -->
+<div class="modal fade" id="modalFolowers" tabindex="-1" role="dialog" aria-labelledby="modalFolowersTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalFolowersTitle">Folowers</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    @foreach (var item in Model.folowingList)
+                    {
+                        <li class="list-group-item border-0">
+                            <div class="mainDivFolower d-flex bd-highlight">
+                                <div class="AvatarDivFolower p-2 bd-highlight">
+                                    <a href="#" style="width:30px;height:30px;display:block">
+                                        <img class="card-img-top hoverImage" src="https://www.w3schools.com/howto/img_avatar.png" alt="Card image cap" height="30" width="30" style="border-radius:50%">
+                                    </a>
+                                </div>
+                                <div class="UserDivFolower  p-2 flex-grow-1 bd-highlight">
+                                    <a href="#" style="text-decoration:none"> @item.UserName</a>
+                                    <span style="display:flex">Nickname</span>
+                                </div>
+
+                                <div class="SecondDiv p-2 bd-highlight">
+                                    <button type="button" class="btn btn-primary btn-sm" style="padding:3px;text-transform:none;border-radius:4px;background-color:#1691ab;border-color:#1691ab;font-weight:500;">Subscribe</button>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Folowing -->
+<div class="modal fade" id="modalFolowing" tabindex="-1" role="dialog" aria-labelledby="modalFolowingTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalFolowingTitle">Folowing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    @foreach (var item in Model.folowingList)
+                    {
+                        <li class="list-group-item border-0">
+                            <div class="mainDivFolower d-flex bd-highlight">
+                                <div class="AvatarDivFolower p-2 bd-highlight">
+                                    <a href="#" style="width:30px;height:30px;display:block">
+                                        <img class="card-img-top hoverImage" src="https://www.w3schools.com/howto/img_avatar.png" alt="Card image cap" height="30" width="30" style="border-radius:50%">
+                                    </a>
+                                </div>
+                                <div class="UserDivFolower  p-2 flex-grow-1 bd-highlight">
+                                    <a href="#" style="text-decoration:none"> @item.UserName</a>
+                                </div>
+
+                                <div class="SecondDiv p-2 bd-highlight">
+                                    <button type="button" class="btn btn-primary btn-sm" style="padding:3px;text-transform:none;border-radius:4px;background-color:#1691ab;border-color:#1691ab;font-weight:500;">Subscribe</button>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
 @section Style{
     <style>
+        .mainDivFolower {
+        }
 
+        .ProfileNav {
+            margin-bottom: 10px;
+            margin-top: -30px;
+        }
+
+            .ProfileNav ul li a {
+                margin-right: 3px;
+            }
+
+                .ProfileNav ul li a:hover {
+                    color: whitesmoke;
+                    background-color: #5278A5;
+                }
+
+                .ProfileNav ul li a.active {
+                    color: whitesmoke;
+                    background-color: #5278A5;
+                }
 
         .subheading {
             cursor: default;

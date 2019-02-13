@@ -35,6 +35,7 @@ namespace MySite.Models
                     dbEntry.LastName = profile.LastName;
                     dbEntry.Description = profile.Description;
                     dbEntry.Folowers = profile.Folowers;
+                    dbEntry.Folowing = profile.Folowing;
                     dbEntry.Viewers = profile.Viewers;
                     dbEntry.ImageData = profile.ImageData;
                     dbEntry.ImageMimeType = profile.ImageMimeType;

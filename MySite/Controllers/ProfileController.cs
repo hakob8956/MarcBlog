@@ -66,23 +66,71 @@ namespace MySite.Controllers
         public async Task<IActionResult> Index(int profileID, string category, int page = 1, string title = null, int ajaxRequest = 0, int allowEdit = 0)
         {
             var user = await GetCurrentUserAsync();
-
+            bool isSubscribe = false;
             Profile profile = _profile.Profiles.FirstOrDefault(p => p.ProfileID == profileID);
             if (profile != null)
             {
 
                 var posts = _post.Posts.Where(p => p.ProfileID == profile.ProfileID);
                 PostViewModel postModel = SetPost(posts, category, page, title);
-                var userPostProfile = _userManager.Users.FirstOrDefault(p => p.Id == profile.UserID);//Who create post
-                bool Me = true ? user != null && user.Id == userPostProfile.Id : false;
+                var userPostAccount = _userManager.Users.FirstOrDefault(p => p.Id == profile.UserID);//Who create post
+                bool _Me = true ? user != null && user.Id == userPostAccount.Id : false;
+                //Check isSubscribe
+                if (_Me || _folower.Folowers.FirstOrDefault(u => u.UserID == user.Id && u.FolowerID == userPostAccount.Id) != null)
+                    isSubscribe = true;
+                //
+                List<FolowerListViewModel> folowingList = null;
+                List<FolowerListViewModel> folowersList = null;
+                if (_Me)
+                {
+                    //Create Folowing List
+                    folowingList = new List<FolowerListViewModel>();
+
+                    foreach (var item in _folower.Folowers.Where(u => u.UserID == user.Id))
+                    {
+                        var currentFolowerAccount = _userManager.Users.FirstOrDefault(u => u.Id == item.FolowerID);
+                        var currentFolowerProfile = _profile.Profiles.FirstOrDefault(p => p.UserID == item.FolowerID);
+                        folowingList.Add(
+                            new FolowerListViewModel
+                            {
+                                FolowerID = item.FolowerID,
+                                UserID = user.Id,
+                                ImageData = currentFolowerProfile.ImageData,
+                                ImageMimeType = currentFolowerProfile.ImageMimeType,
+                                UserName = currentFolowerAccount.UserName,
+                                isSubscribe = isSubscribe
+                            });
+                    }
+                    //Create Folowers List
+                    folowersList = new List<FolowerListViewModel>();
+
+                    foreach (var item in _folower.Folowers.Where(u => u.FolowerID == user.Id))
+                    {
+                        var currentFolowerAccount = _userManager.Users.FirstOrDefault(u => u.Id == item.UserID);
+                        var currentFolowerProfile = _profile.Profiles.FirstOrDefault(p => p.UserID == item.UserID);
+                        folowersList.Add(
+                            new FolowerListViewModel
+                            {
+                                FolowerID = item.FolowerID,
+                                UserID = user.Id,
+                                ImageData = currentFolowerProfile.ImageData,
+                                ImageMimeType = currentFolowerProfile.ImageMimeType,
+                                UserName = currentFolowerAccount.UserName,
+                                isSubscribe = isSubscribe
+                            });
+                    }
+                }
+                //
                 ProfileViewModel profileModel = new ProfileViewModel
                 {
                     Profile = profile,
-                    email = userPostProfile.Email,
+                    email = userPostAccount.Email,
                     MyPosts = postModel,
-                    Me = Me,//if user exist and userId == profileID
-                    AllowEdit = Me ? allowEdit : 0
-
+                    Me = _Me,//if user exist and userId == profileID
+                    AllowEdit = _Me ? allowEdit : 0,
+                    isSubscribe = isSubscribe,
+                    folowersList = folowersList,
+                    folowingList = folowingList
                 };
                 if (ajaxRequest == 1)//FOR AJAX REQUEST
                 {
@@ -176,7 +224,9 @@ namespace MySite.Controllers
             var CurrentUser = await GetCurrentUserAsync();
             Post FolowerAccount = null;
             Profile FolowerProfile = null;
-            if (model.postID == 0)
+            Profile CurrentUserProfile = null;
+
+            if (model.postID == 0)//TODO VIEW THIS ?
             {
                 FolowerProfile = _profile.Profiles.FirstOrDefault(p => model.profileID == p.ProfileID);
             }
@@ -189,6 +239,7 @@ namespace MySite.Controllers
 
             if (CurrentUser != null && FolowerProfile != null)
             {
+                CurrentUserProfile = _profile.Profiles.FirstOrDefault(p => p.UserID == CurrentUser.Id);
                 if (!Url.IsLocalUrl(model.returnUrl))
                 {
                     model.returnUrl = "/";
@@ -205,9 +256,11 @@ namespace MySite.Controllers
                         if (item.UserID.Equals(CurrentUser.Id))
                         {
                             FolowerProfile.Folowers--;
+                            CurrentUserProfile.Folowing--;
 
                             _folower.DeleteFolower(item.ID);
                             _profile.SaveProfile(FolowerProfile);
+                            _profile.SaveProfile(CurrentUserProfile);
                             return Json("Delete");
                         }
                     }
@@ -217,9 +270,11 @@ namespace MySite.Controllers
                         UserID = CurrentUser.Id
 
                     };
+                    CurrentUserProfile.Folowing++;
                     FolowerProfile.Folowers++;
                     _folower.AddFolower(modelFolower);
                     _profile.SaveProfile(FolowerProfile);
+                    _profile.SaveProfile(CurrentUserProfile);
                     return Json("Add");
                 }
             }
@@ -230,6 +285,8 @@ namespace MySite.Controllers
 
             return Json("Error");
         }
+
+        public ViewResult Management() => View();
 
         //[HttpGet]
         //public async Task<IActionResult> Management()

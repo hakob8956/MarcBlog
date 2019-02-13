@@ -25,7 +25,7 @@
                             <h1 style="color:#F3F3F3;cursor:default">@title</h1>
                             if (Model.Profile.ImageData == null)
                             {
-                                <img src="https://picsum.photos/320/250" alt="Avatar" class="image card-img-top avatar">
+                                <img src="https://picsum.photos/320/250" alt="Avatar" class="card-img-top avatar">
 
                             }
                             else
@@ -68,14 +68,14 @@
                                 }
                                 else
                                 {
-                                    @if (Model.Profile.ImageData == null)
-                                    {
-                                        <div class="form-text" style="font-size:18px;margin-left:25px;color:#784F61;cursor:default">No Image</div>
-                                    }
-                                    else
-                                    {
+                                    @*@if (Model.Profile.ImageData == null)
+                                        {
+                                            <div class="form-text" style="font-size:18px;margin-top:-10px;color:#784F61;cursor:default">No Image</div>
+                                        }
+                                        else
+                                        {
 
-                                    }
+                                        }*@
 
                                 }
                             </div>
@@ -100,7 +100,7 @@
                         <h1 style="color:#F3F3F3;cursor:default">@title</h1>
                         if (Model.Profile.ImageData == null)
                         {
-                            <img src="https://picsum.photos/320/250" alt="Avatar" class="image card-img-top avatar">
+                            <img src="https://picsum.photos/320/250" alt="Avatar" class="card-img-top avatar">
 
                         }
                         else
@@ -112,86 +112,88 @@
                         <span class="subheading"><span style="color:#98E8D6">LastName:</span>  @Model.Profile.LastName</span>
                         <span class="subheading"><span style="color:#98E8D6">Email:</span>  @Model.email</span>
 
-                        <span class="subheading"><span style="color:#98E8D6">Folowers:</span> @Model.Profile.Folowers</span>
+                        <span class="subheading"><a href="#" class="" data-toggle="modal" data-target="#modalFolowers" style="text-decoration:none"><span style="color:#98E8D6">Folowers:</span> </a>@Model.Profile.Folowers</span>
+
+                        <span class="subheading"><a href="#" class="" data-toggle="modal" data-target="#modalFolowing" style="text-decoration:none"><span style="color:#98E8D6">Folowing:</span></a> @Model.Profile.Folowing</span>
+
                         <span class="subheading"><span style="color:#98E8D6">Description:</span><br />@Model.Profile.Description</span>
                     }
 
                 </div>
-
                 <span class="fa-pull-right">
                     <form asp-action="SubAjax" asp-controller="Profile" id="myForm">
                         <input type="hidden" name="profileID" id="profileID" value="@Model.Profile.ProfileID" />
                         <input type="hidden" name="returnUrl" id="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                         <button class="btn  btn-primary btn-sm" style="width:125px;height:20px" id="subscribe" type="submit">
-                            @*@if (Model.isSubscribe)
-                                {<p style="margin-top:-10px;margin-left:-16px;color:#C0C0C0" id="mySubText">Subscribed:@Model.Profile.Folowers</p>}
-                                @if (!Model.isSubscribe)
-                                {<*@<p style="margin-top:-10px;margin-left:-16px" id="mySubText">Subscribe:@Model.Profile.Folowers</p>
-                            </button>
-                        </form>
-                        @if (Model.Me)
-                        {
-                            <button class="btn  btn-secondary btn-sm" style="width:125px;height:20px;margin-top:3px" id="editProfileButton" type="button">
-                                <p style="margin-top:-10px;margin-left:-16px">Edit</p>
-                            </button>
-                        }
-                    </span>
-                </div>
+                            @if (Model.isSubscribe)
+                            {<p style="margin-top:-10px;margin-left:-16px;color:#C0C0C0" id="mySubText">Subscribed:@Model.Profile.Folowers</p>}
+                            @if (!Model.isSubscribe)
+                            {<p style="margin-top:-10px;margin-left:-16px" id="mySubText">Subscribe:@Model.Profile.Folowers</p>}
+                        </button>
+                    </form>
+                    @if (Model.Me)
+                    {
+                        <button class="btn  btn-secondary btn-sm" style="width:125px;height:20px;margin-top:3px" id="editProfileButton" type="button">
+                            <p style="margin-top:-10px;margin-left:-16px">Edit</p>
+                        </button>
+                    }
+                </span>
             </div>
         </div>
+    </div>
 
-    </header>
-    <style>
+</header>
+<style>
 
-        .avatar {
-            width: 320px;
-            height: 250px;
-            border: solid 2px #524545;
-        }
+    .avatar {
+        width: 320px;
+        height: 250px;
+        border: solid 2px #524545;
+    }
 
-        .myInput {
-            margin: auto;
-            width: 50%;
-        }
+    .myInput {
+        margin: auto;
+        width: 50%;
+    }
 
-        .Mcontainer {
-            position: relative;
-            width: 100%;
-        }
+    .Mcontainer {
+        position: relative;
+        width: 100%;
+    }
 
-        .image {
-            opacity: 1;
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: .5s ease;
-            backface-visibility: hidden;
-        }
+    .image {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
 
-        .middle {
-            transition: .5s ease;
-            opacity: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-        }
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
 
-        .Mcontainer:hover .image {
-            opacity: 0.3;
-        }
+    .Mcontainer:hover .image {
+        opacity: 0.3;
+    }
 
-        .Mcontainer:hover .middle {
-            opacity: 1;
-        }
+    .Mcontainer:hover .middle {
+        opacity: 1;
+    }
 
-        .text {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
-            padding: 16px 32px;
-        }
-    </style>
+    .text {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+</style>
 

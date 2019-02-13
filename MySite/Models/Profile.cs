@@ -17,6 +17,7 @@ namespace MySite.Models
         [MaxLength(120, ErrorMessage = "Max length 120")]
         public string Description { get; set; }
         public int Folowers { get; set; }
+        public int Folowing { get; set; }
         public int Viewers { get; set; }
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
